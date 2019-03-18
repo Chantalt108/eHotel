@@ -6,8 +6,8 @@
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <h:outputStylesheet name="./css/default.css"/>
-        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <h:outputStylesheet library="css" name="default.css"/>
+        <h:outputStylesheet library="css" name="cssLayout.css"/>
         <title>Facelets Template</title>
     </h:head>
 
@@ -15,11 +15,18 @@
 
 
         <div id="top" class="top">
-            <ui:insert name="top">Top</ui:insert>
+            <ui:insert name="top">
+                <div>
+                    <h1><BIG>eHotels</BIG></h1>
+                </div>
+            </ui:insert>
         </div>
         <div>
             <div id="left">
-                <ui:insert name="left">Left</ui:insert>
+                <ui:insert name="left">
+                 <li><h:link outcome="add" value="Add User"/></li>
+                 <li><h:link outcome="lookup" value="Lookup User"/></li>
+                </ui:insert>
             </div>
             <div id="content" class="left_content">
                 <ui:insert name="content">Content</ui:insert>
