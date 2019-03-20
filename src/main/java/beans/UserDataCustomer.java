@@ -6,29 +6,46 @@
 
 package beans;
 
+import java.sql.Date;
 import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
-import persistence.User;
+import persistence.UserCustomer;
 
 /**
  *
- * @author ssome
+ * @author chant
  */
-@Named(value = "userData")
+@Named(value = "userDataCustomer")
 @RequestScoped
-public class UserData {
+public class UserDataCustomer {
     private String id;
     private String name;
-    private String birthdate;
+    private String address;
+    private int ssn;
+    private Date registrationDate;
+    private String password;
     private String addstatus;
-    private List<User> lookupResults;
+    private List<UserCustomer> lookupResults;
+    
+    
     /**
      * Creates a new instance of UserData
      */
-    public UserData() {
+    public UserDataCustomer() {
     }
-
+    
+//    public Date getRegistrationDate() {
+//        return registrationDate;
+//    }
+//
+//    /**
+//     * @param registrationDate the registrationDate to set
+//     */
+//    public void setRegistrationDate(Date registrationDate) {
+//        this.registrationDate = registrationDate;
+//    }
+    
     /**
      * @return the id
      */
@@ -42,7 +59,21 @@ public class UserData {
     public void setId(String id) {
         this.id = id;
     }
-
+    
+    /**
+     * @return the password
+     */
+    public String getPassword(){
+        return password;
+    }
+    
+    /**
+     * @param password the password to set
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
     /**
      * @return the name
      */
@@ -56,21 +87,36 @@ public class UserData {
     public void setName(String name) {
         this.name = name;
     }
-
+    
     /**
-     * @return the birthdate
+     * @return the address
      */
-    public String getBirthdate() {
-        return birthdate;
+    public String getAddress() {
+        return address;
     }
 
     /**
-     * @param birthdate the birthdate to set
+     * @param address the address to set
      */
-    public void setBirthdate(String birthdate) {
-        this.birthdate = birthdate;
+    public void setAddress(String address) {
+        this.address = address;
     }
     
+    /**
+     * @return the ssn
+     */
+    public int getSsn() {
+        return ssn;
+    }
+
+    /**
+     * @param ssn the ssn to set
+     */
+    public void setSsn(int ssn) {
+        this.ssn = ssn;
+    }
+    
+       
     public String getAddstatus() {
         return addstatus;
     }
@@ -79,11 +125,11 @@ public class UserData {
         this.addstatus = addstatus;
     }
 
-    public void setLookupResults(List<User> results) {
+    public void setLookupResults(List<UserCustomer> results) {
         this.lookupResults = results;
     }
     
-    public List<User> getLookupResults() {
+    public List<UserCustomer> getLookupResults() {
         return lookupResults;
     }
     // show results if any

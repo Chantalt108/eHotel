@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+     <ui:composition template="./template.xhtml">
+
+      <ui:define name="content">
+        <h1>User Information</h1>
+        <f:view>
+            <h:form prependId="false">
+                <h:panelGrid columns="3">
+                    <h:outputText value="User Id"></h:outputText>
+                    <h:inputText id="id" value="#{userDataEmployee.id}" required="true" requiredMessage="Please enter User Id">
+                    </h:inputText>
+                    <h:message id="idMsg" for="id" errorStyle="color:red; display:block"/>
+                     
+                    <h:outputText value="Password"></h:outputText>
+                    <h:inputSecret id="password" value="#{userDataEmployee.password}" required="true" requiredMessage="Please enter Password">
+                    </h:inputSecret>
+                    <h:message id="passwordMsg" for="passwd" errorStyle="color:red; display:block" styleClass="errorMessage"/>
+                    
+                    <h:outputText value="Full Name"></h:outputText>
+                    <h:inputText id="name" value="#{userDataEmployee.name}" required="true" requiredMessage="Please enter User Name">
+                    </h:inputText>
+                    <h:message id="nameMsg" for="name" errorStyle="color:red; display:block" styleClass="errorMessage"/>
+                    
+                    <h:outputText value="Address"></h:outputText>
+                    <h:inputText id="address" value="#{userDataEmployee.address}" required="true" requiredMessage="Please enter address">
+                    </h:inputText>
+                    <h:message id="addressMsg" for="address" errorStyle="color:red; display:block" styleClass="errorMessage"/>
+                    
+                    <h:outputText value="User SSN"></h:outputText>
+                    <h:inputText id="ssn" value="#{userDataEmployee.ssn}" required="true" requiredMessage="Please enter SSN">
+                    </h:inputText>
+                    <h:message id="ssnMsg" for="ssn" errorStyle="color:red; display:block"/>
+                    
+                    <h:outputText value="Job Position"></h:outputText>
+                    <h:inputText id="job_position" value="#{userDataEmployee.job_Position}" required="true" requiredMessage="Please enter job position">
+                    </h:inputText>
+                    <h:message id="job_positionMsg" for="job_position" errorStyle="color:red; display:block" styleClass="errorMessage"/> 
+                                                           
+                </h:panelGrid>
+                <h:commandButton value="Add" type="command"  actionListener="#{lookupControlEmployee.addEmployee}">
+                   <f:ajax execute="id password name address ssn job_position" render="status idMsg nameMsg passwordMsg"/>
+                </h:commandButton>
+                <h:commandButton value="Cancel" type="reset" />
+                
+                <div>
+                    <hr/>
+                    <hr/>
+                <h:outputText  style="color:royalblue; font-size: large; font-weight: bold" id="status" value="#{userDataEmployee.addstatus}"/>
+                </div>
+            </h:form>
+        </f:view>
+      </ui:define>
+
+    </ui:composition>
+
+    </body>
+</html>
