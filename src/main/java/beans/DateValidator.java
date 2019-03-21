@@ -19,7 +19,7 @@ import javax.faces.validator.ValidatorException;
 
 /**
  *
- * @author ssome
+ * @author chant
  */
 @FacesValidator("dateValidator")
 public class DateValidator implements Validator {
