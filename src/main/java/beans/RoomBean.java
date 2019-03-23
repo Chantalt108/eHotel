@@ -206,12 +206,13 @@ public class RoomBean implements Serializable {
         Room room = new Room(room_id, hotel_id, price, amenities, capacity, outside_view, extendable, problems);
         
         try {
+           
            persist(room); 
            String msg = "Room Created Successfully";
            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, msg, msg));
            FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
        
-           return "viewRoom?faces-redirect=true&room_id="+room.getRoom_Id()+"";
+           return (msg);
         } catch(RuntimeException e) {
            String msg = "Error While Creating Room";
            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, msg, msg));

@@ -21,7 +21,7 @@ import persistence.UserAccount;
 
 /**
  *
- * @author ssome
+ * @author chant
  * 
  * All requests are filtered through this Servlet Filter before being passed
  * to a Servlet.

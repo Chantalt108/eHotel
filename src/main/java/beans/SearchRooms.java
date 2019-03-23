@@ -102,7 +102,7 @@ public class SearchRooms implements Serializable {
         return room_id;
     }
 
-    public void setroom_id(int room_id) {
+    public void setRoom_Id(int room_id) {
         this.room_id = room_id;
     }
 

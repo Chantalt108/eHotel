@@ -18,8 +18,8 @@
         <p:growl autoUpdate="true"/>
         <h:form id="form1">
             
-            <p:panel header="Add Property" style="margin-bottom:20px">
-                       <p:panel header="Property Details" style="margin-bottom:20px">
+            <p:panel header="Add Room" style="margin-bottom:20px">
+                       <p:panel header="Room Details" style="margin-bottom:20px">
                         <h:panelGrid columns="1">
                             <div class="column">  
                             <p:outputLabel value="Room Number:"/>
@@ -57,21 +57,21 @@
                             </div>
                             
                             <div class="row">
-                            <p:outputLabel value="Outside View"/>
-                            <p:inputText id="outside_view"
-                                          value="#{RoomBean.outside_View}">
+                            <p:outputLabel value="Extendable: "/>
+                            <p:inputText id="extendable"
+                                          value="#{RoomBean.extendable}">
                             </p:inputText>
                             </div>
                             
-                            <p:outputLabel value="Extendable:*"/>                                                      
-                            <p:selectOneMenu id="extendable" value="#{RoomBean.extendable}" required="true" label="extendable" requiredMessage="A answer is required">
-                                <f:selectItem itemLabel="" itemValue="1" noSelectionOption="false" />
-                                <f:selectItem itemLabel="Mountain" itemValue="1" noSelectionOption="false" />
-                                <f:selectItem itemLabel="Sea" itemValue="2" noSelectionOption="false" />
-                                <f:selectItems value="#{RoomBean.extendable}" />
-                                <p:ajax event="keyup" update="extendableMsg"/>
+                            <p:outputLabel value="Outside View:*"/>                                                      
+                            <p:selectOneMenu id="outside_view" value="#{RoomBean.outside_View}" required="true" label="extendable" requiredMessage="A answer is required">
+                                <f:selectItem itemLabel="" itemValue="" noSelectionOption="false" />
+                                <f:selectItem itemLabel="Mountain" itemValue="Mountain" noSelectionOption="false" />
+                                <f:selectItem itemLabel="Sea" itemValue="Sea" noSelectionOption="false" />
+                                <f:selectItems value="#{RoomBean.outside_View}" />
+                                <p:ajax event="keyup" update="outside_ViewMsg"/>
                             </p:selectOneMenu>
-                            <p:message  id="extendableMsg" for="extendable"/>
+                            <p:message  id="outside_ViewMsg" for="outside_view"/>
                                                         
                             <div class="row">
                             <p:outputLabel value="Problems"/>
