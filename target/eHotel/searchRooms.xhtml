@@ -15,39 +15,14 @@
             <hr></hr>
             <h:panelGrid columns="2" >
                 <h:outputText value="Room ID" escape="false"/>
-                <h:inputText value="#{searchRooms.room_Id}" />
+                <h:inputText value="#{searchRooms.ROOM_ID}" />
                 <h:outputText value="Hotel ID" escape="false"/>
-                <h:inputText value="#{searchRooms.hotel_Id}" />
+                <h:inputText value="#{searchRooms.HOTEL_ID}" />
                 <h:outputText value="Price" escape="false"/>
-                <h:inputText value="#{searchRooms.price}" />
+                <h:inputText value="#{searchRooms.PRICE}" />
                 <h:outputText value="Amenities" escape="false"/>
-                <h:inputText value="#{searchRooms.amenities}" />
-                <h:outputText value="Capacity" escape="false"/>
-                <h:inputText value="#{searchRooms.capacity}" />
-            </h:panelGrid>
-            
-            <h:outputText value="Outside View" escape="false"/>
-            <h:panelGrid columns="2" >
-                <h:outputText value="Property Type" escape="false"/>
-                <h:selectOneMenu value="#{searchRooms.outside_View}">
-                    <f:selectItem itemLabel="" itemValue=""/>
-                    <f:selectItem itemLabel="Mountain" itemValue="Mountain"/>
-                    <f:selectItem itemLabel="Sea" itemValue="Sea"/>
-                </h:selectOneMenu>
-            </h:panelGrid>
-            
-            <h:outputText value="Extendable?" escape="false"/>
-            <h:panelGrid columns="2" >
-                <h:outputText value="Extendable?" escape="false"/>
-                <h:selectOneMenu value="#{searchRooms.extendable}">
-                    <f:selectItem itemLabel="Yes" itemValue="1"/>
-                    <f:selectItem itemLabel="No" itemValue="0"/>
-                </h:selectOneMenu>
-            </h:panelGrid>
-            
-            <h:panelGrid columns="2" >
-                <h:outputText value="Problems" escape="false"/>
-                <h:inputText value="#{searchRooms.problems}" />
+                <h:inputText value="#{searchRooms.AMENITIES}" />
+
             </h:panelGrid>
             
             <h:commandButton value="Search" action="#{searchRooms.search}"></h:commandButton>
@@ -57,4 +32,3 @@
         </ui:composition>
     </h:body>
 </html>
-

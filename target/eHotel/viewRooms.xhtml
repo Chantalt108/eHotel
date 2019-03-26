@@ -12,41 +12,40 @@
         <ui:define name="content">
             <h:form>
             <h:panelGroup id="results">
+                <h:dataTable  rendered="#{searchRooms.showResults}" border="2" bgcolor="yellow" id="resultTable" value="#{searchRooms.lookupResults}" var="room">
                 <h:column>
                     <f:facet name="header">Room ID</f:facet>
-                    #{room.room_id}
+                    #{room.ROOM_ID}
                 </h:column>
                 <h:column>
                     <f:facet name="header">Hotel ID</f:facet>
-                    #{hotel.hotel_id}
+                    #{room.HOTEL_ID}
                 </h:column>
                 <h:column>
                     <f:facet name="header">Price</f:facet>
-                    #{room.price}
+                    #{room.PRICE}
                 </h:column>
                 <h:column>
                     <f:facet name="header">Amenities</f:facet>
-                    #{room.amenities}
-                </h:column>    
+                    #{room.AMENITIES}
+                </h:column>
                 <h:column>
                     <f:facet name="header">Capacity</f:facet>
-                    #{room.capacity}
+                    #{room.CAPACITY}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Outside View</f:facet>
+                    #{room.OUTSIDE_VIEW}
                 </h:column>
                 <h:column>
                     <f:facet name="header">Extendable</f:facet>
-                    #{room.extendable}
+                    #{room.EXTENDABLE}
                 </h:column>
                 <h:column>
                     <f:facet name="header">Problems</f:facet>
-                    #{room.problems}
+                    #{room.PROBLEMS}
                 </h:column>
-                
-                <h:column>
-                    <f:facet name="header">View Room</f:facet>
-                    <h:button value="View" outcome="viewRoom">
-                        <f:param name ="propertyId" value="#{room.room_id}"></f:param>
-                    </h:button>
-                </h:column> 
+                </h:dataTable>
                 </h:panelGroup>
             </h:form>
             

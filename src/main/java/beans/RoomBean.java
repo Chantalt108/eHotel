@@ -47,14 +47,14 @@ import persistence.UserAccount;
 @ViewScoped
 public class RoomBean implements Serializable {
        
-    private int room_id;
-    private int price;
-    private String amenities;
-    private int capacity;
-    private String outside_view;
-    private Boolean extendable;
-    private String problems;
-    private int hotel_id;
+    private int ROOM_ID;
+    private int PRICE;
+    private String AMENITIES;
+    private int CAPACITY;
+    private String OUTSIDE_VIEW;
+    private Boolean EXTENDABLE;
+    private String PROBLEMS;
+    private int HOTEL_ID;
     @PersistenceContext(unitName = "CSI2132_eHotel_war_1.0-SNAPSHOTPU")
     private EntityManager em;
     @Resource
@@ -82,115 +82,115 @@ public class RoomBean implements Serializable {
     }
 
      /**
-     * @return the room_id
+     * @return the ROOM_ID
      */
-    public int getRoom_Id() {
-        return room_id;
+    public int getROOM_ID() {
+        return ROOM_ID;
     }
 
     /**
-     * @param room_id the room_id to set
+     * @param ROOM_ID the ROOM_ID to set
      */
-    public void setRoom_Id(int room_id) {
-        this.room_id = room_id;
+    public void setROOM_ID(int ROOM_ID) {
+        this.ROOM_ID = ROOM_ID;
     }
 
      /**
-     * @return the price
+     * @return the PRICE
      */
-    public int getPrice() {
-        return price;
+    public int getPRICE() {
+        return PRICE;
     }
 
     /**
-     * @param price the price to set
+     * @param PRICE the PRICE to set
      */
-    public void setPrice(int price) {
-        this.price = price;
+    public void setPRICE(int PRICE) {
+        this.PRICE = PRICE;
     }
     
     /**
-     * @return the amenities
+     * @return the AMENITIES
      */
-    public String getAmenities() {
-        return amenities;
+    public String getAMENITIES() {
+        return AMENITIES;
     }
 
     /**
-     * @param amenities the amenities to set
+     * @param AMENITIES the AMENITIES to set
      */
-    public void setAmenities(String amenities) {
-        this.amenities = amenities;
+    public void setAMENITIES(String AMENITIES) {
+        this.AMENITIES = AMENITIES;
     }
 
     /**
-     * @return the capacity
+     * @return the CAPACITY
      */
-    public int getCapacity() {
-        return capacity;
+    public int getCAPACITY() {
+        return CAPACITY;
     }
 
     /**
-     * @param capacity the capacity to set
+     * @param CAPACITY the CAPACITY to set
      */
-    public void setCapacity(int capacity) {
-        this.capacity = capacity;
+    public void setCAPACITY(int CAPACITY) {
+        this.CAPACITY = CAPACITY;
     }
 
     /**
-     * @return the outside_view
+     * @return the OUTSIDE_VIEW
      */
-    public String getOutside_View() {
-        return outside_view;
+    public String getOUTSIDE_VIEW() {
+        return OUTSIDE_VIEW;
     }
 
     /**
-     * @param outside_view the outside_view to set
+     * @param OUTSIDE_VIEW the OUTSIDE_VIEW to set
      */
-    public void setOutside_View(String outside_view) {
-        this.outside_view = outside_view;
+    public void setOUTSIDE_VIEW(String OUTSIDE_VIEW) {
+        this.OUTSIDE_VIEW = OUTSIDE_VIEW;
     }
     
     /**
-     * @return the extendable
+     * @return the EXTENDABLE
      */
-    public Boolean getExtendable(){
-        return extendable;
+    public Boolean getEXTENDABLE(){
+        return EXTENDABLE;
     }
     
     /**
-     * @param extendable the extendable to set
+     * @param EXTENDABLE the EXTENDABLE to set
      */
-    public void setExtendable(Boolean extendable){
-        this.extendable = extendable;
+    public void setEXTENDABLE(Boolean EXTENDABLE){
+        this.EXTENDABLE = EXTENDABLE;
     }
 
     /**
-     * @return the problems
+     * @return the PROBLEMS
      */
-    public String getProblems() {
-        return problems;
+    public String getPROBLEMS() {
+        return PROBLEMS;
     }
 
     /**
-     * @param problems the problems to set
+     * @param PROBLEMS the PROBLEMS to set
      */
-    public void setProblems(String problems) {
-        this.problems = problems;
+    public void setPROBLEMS(String PROBLEMS) {
+        this.PROBLEMS = PROBLEMS;
     }
     
     /**
-     * @return the hotel_id
+     * @return the HOTEL_ID
      */
-    public int getHotel_Id() {
-        return hotel_id;
+    public int getHOTEL_ID() {
+        return HOTEL_ID;
     }
 
     /**
-     * @param hotel_id the hotel_id to set
+     * @param HOTEL_ID the HOTEL_ID to set
      */
-    public void setHotel_Id(int hotel_id) {
-        this.hotel_id = hotel_id;
+    public void setHOTEL_ID(int HOTEL_ID) {
+        this.HOTEL_ID = HOTEL_ID;
     }
     
     /**
@@ -203,7 +203,7 @@ public class RoomBean implements Serializable {
         HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
         UserAccount u = (UserAccount) session.getAttribute("User");
         
-        Room room = new Room(room_id, hotel_id, price, amenities, capacity, outside_view, extendable, problems);
+        Room room = new Room(ROOM_ID, HOTEL_ID, PRICE, AMENITIES, CAPACITY, OUTSIDE_VIEW, EXTENDABLE, PROBLEMS);
         
         try {
            

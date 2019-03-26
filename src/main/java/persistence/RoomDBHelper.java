@@ -23,7 +23,7 @@ public class RoomDBHelper {
     }
     
     
-    public static List<Room> findRoomsWithCriteria(EntityManager em, SearchRooms searchRoom){
+    public static List<Room> findRoomsWithCriteria(EntityManager em, SearchRooms searchRoom){       
         String initQueryString = "SELECT r FROM Room r";
         String whereClauseConditions = "";
         Query query;
@@ -31,36 +31,36 @@ public class RoomDBHelper {
         //Set conditions for the WHERE clause of the Query
         
         
-        if(!(0 == searchRoom.getRoom_Id())){ //If the room_id field was used by the User
-            whereClauseConditions += " r.room_id = :roomNum";
+        if(!(0 == searchRoom.getROOM_ID())){ //If the room_id field was used by the User
+            whereClauseConditions += " r.ROOM_ID = :roomNum";
         }
-        if(!(0 == searchRoom.getHotel_Id())){
+        if(!(0 == searchRoom.getHOTEL_ID())){
             if(!"".equals(whereClauseConditions)){whereClauseConditions += " AND";} //If a Condition has been added already
-            whereClauseConditions += " r.hotel_id = :hotelNum";
+            whereClauseConditions += " r.HOTEL_ID = :hotelNum";
         }
-        if(!(searchRoom.getPrice() == 0)){
+        if(!(searchRoom.getPRICE() == 0)){
             if(!"".equals(whereClauseConditions)){whereClauseConditions += " AND";} //If a Condition has been added already
-            whereClauseConditions += " r.price = :rPrice";
+            whereClauseConditions += " r.PRICE = :rPrice";
         }
-        if(!(searchRoom.getAmenities() == null)){
+        if(!("".equals(searchRoom.getAMENITIES()))){
             if(!"".equals(whereClauseConditions)){whereClauseConditions += " AND";} //If a Condition has been added already
-            whereClauseConditions += " r.amenities = :rAmenities";
+            whereClauseConditions += " r.AMENITIES = :rAmenities";
         }
-        if(!(searchRoom.getCapacity() == 0)){
-            if(!"".equals(whereClauseConditions)){whereClauseConditions += " AND";} //If a Condition has been added already
-            whereClauseConditions += " r.capacity = rCapacity";
-        }
-        if(!(searchRoom.getOutside_View() == null)){
-            if(!"".equals(whereClauseConditions)){whereClauseConditions += " AND";} //If a Condition has been added already
-            whereClauseConditions += " r.outside_view = rOutside_View";
-        }
-//        if(!(searchRoom.getExtendable() == null)){
+//        if(!(searchRoom.getCAPACITY() == 0)){
 //            if(!"".equals(whereClauseConditions)){whereClauseConditions += " AND";} //If a Condition has been added already
-//            whereClauseConditions += " r.extendable = rExtendable";
+//            whereClauseConditions += " r.CAPACITY = rCapacity";
 //        }
-//        if(!(searchRoom.getProblems() == null)){
+//        if(!("".equals(searchRoom.getOUTSIDE_VIEW()))){
 //            if(!"".equals(whereClauseConditions)){whereClauseConditions += " AND";} //If a Condition has been added already
-//            whereClauseConditions += " r.problems = rProblems";
+//            whereClauseConditions += " r.OUTSIDE_VIEW = rOutside_View";
+//        }
+//        if(!(searchRoom.getEXTENDABLE() == null)){
+//            if(!"".equals(whereClauseConditions)){whereClauseConditions += " AND";} //If a Condition has been added already
+//            whereClauseConditions += " r.EXTENDABLE = rExtendable";
+//        }
+//        if(!("".equals(searchRoom.getPROBLEMS()))){
+//            if(!"".equals(whereClauseConditions)){whereClauseConditions += " AND";} //If a Condition has been added already
+//            whereClauseConditions += " r.PROBLEMS = rProblems";
 //        }
         
         
@@ -71,29 +71,29 @@ public class RoomDBHelper {
             query = em.createQuery(initQueryString);
         
             //Set Parameters of the Query
-            if(!(0 == searchRoom.getRoom_Id())){
-                query.setParameter("roomNum", searchRoom.getRoom_Id());
+            if(!(0 == searchRoom.getROOM_ID())){
+                query.setParameter("roomNum", searchRoom.getROOM_ID());
             }
-            if(!(0 == searchRoom.getHotel_Id())){
-                query.setParameter("hotelNum", searchRoom.getHotel_Id());
+            if(!(0 == searchRoom.getHOTEL_ID())){
+                query.setParameter("hotelNum", searchRoom.getHOTEL_ID());
             }
-            if(!(searchRoom.getPrice() == 0)){
-                query.setParameter("rPrice", searchRoom.getPrice());
+            if(!(searchRoom.getPRICE() == 0)){
+                query.setParameter("rPrice", searchRoom.getPRICE());
             }
-            if(!(null == searchRoom.getAmenities())){
-                query.setParameter("rAmenities", searchRoom.getAmenities());
+            if(!("".equals(searchRoom.getAMENITIES()))){
+                query.setParameter("rAmenities", searchRoom.getAMENITIES());
             }
-            if(!(0 == searchRoom.getCapacity())){
-                query.setParameter("rCapacity", searchRoom.getCapacity());
-            }
-            if(!(null == searchRoom.getOutside_View())){
-                query.setParameter("rOutside_view", searchRoom.getOutside_View());
-            }
-//            if(!(null == searchRoom.getExtendable())){
-//                query.setParameter("rExtendable", searchRoom.getExtendable());
+//            if(!(0 == searchRoom.getCAPACITY())){
+//                query.setParameter("rCapacity", searchRoom.getCAPACITY());
 //            }
-//            if(!(null == searchRoom.getProblems())){
-//                query.setParameter("rProblems", searchRoom.getProblems());
+//            if(!("".equals(searchRoom.getOUTSIDE_VIEW()))){
+//                query.setParameter("rOutside_View", searchRoom.getOUTSIDE_VIEW());
+//            }
+//            if(!(null == searchRoom.getEXTENDABLE())){
+//                query.setParameter("rExtendable", searchRoom.getEXTENDABLE());
+//            }
+//            if(!("".equals(searchRoom.getPROBLEMS()))){
+//                query.setParameter("rProblems", searchRoom.getPROBLEMS());
 //            }
             
         }else{
@@ -104,7 +104,7 @@ public class RoomDBHelper {
     }
 
     public static List<Room> getEmployeeRooms(EntityManager em, String userId){
-        String queryString = "SELECT r FROM Property r WHERE r.employeeId = '" + userId +"'";
+        String queryString = "SELECT r FROM Room r WHERE r.employeeId = '" + userId +"'";
         Query ownerQuery = em.createQuery(queryString);
         return performQuery(ownerQuery);
     }
