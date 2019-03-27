@@ -43,7 +43,7 @@ public class UserAccount implements Serializable {
         serialVersionUID = aSerialVersionUID;
     }
     @Id
-    private String userId;
+     String userId;
     private String address;
     private int ssn;
     private UserType userType;

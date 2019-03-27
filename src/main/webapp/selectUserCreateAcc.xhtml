@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+    <ui:composition template="./template.xhtml">
+
+        <ui:define name="content">
+                  
+        
+                <h1>Create New Account...</h1>
+                <f:view>
+                    <h:form>
+                        <h:outputText value="User Type"></h:outputText>
+                        <h:selectOneMenu id="type" value="#{typeBean.userType}">
+                            <f:selectItems value="#{typeBean.userTypes}" var="user"
+                                itemValue="#{user}" itemLabel="#{user.label}" />
+                        </h:selectOneMenu>
+                        <h:message id="typeMsg" for="type" errorStyle="color:red; display:block"/>
+                        <h:commandButton value="Add" action="#{typeBean.addUserPage}">
+                        <f:ajax execute="type" 
+                               render="typeMsg"/>
+                        </h:commandButton>
+                        <h:commandButton value="Cancel" type="reset" />
+
+                        <div>
+                            <hr/>
+                            <hr/>
+                        <h:outputText  style="color:royalblue; font-size: large; font-weight: bold" id="status" value="#{typeBean.status}"/>
+                        </div>
+                    </h:form>
+                </f:view>
+
+        </ui:define>
+    </ui:composition>
+    </body>
+</html>
