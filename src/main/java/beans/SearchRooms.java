@@ -28,14 +28,14 @@ public class SearchRooms implements Serializable {
     private javax.transaction.UserTransaction utx;
     
     List<Room> lookupResults;
-    private int room_id;
-    private int hotel_id;
-    private int price;
-    private String amenities;
-    private int capacity;
-    private String outside_view;
-    private Boolean extendable;
-    private String problems;
+    private int ROOM_ID;
+    private int HOTEL_ID;
+    private int PRICE;
+    private String AMENITIES;
+    private int CAPACITY;
+    private String OUTSIDE_VIEW;
+    private Boolean EXTENDABLE;
+    private String PROBLEMS;
     private Boolean foundNoResults;
     private Boolean noCriteria;
     
@@ -48,14 +48,7 @@ public class SearchRooms implements Serializable {
     }
     
     public String search() {
-       if(0 == getRoom_Id() 
-               && 0 == getHotel_Id()
-               && getPrice() == 0
-               && null == getAmenities()
-               && 0 == getCapacity()
-               && null == getOutside_View()
-               && false == getExtendable()
-               && null == getProblems()){
+       if(0 == getROOM_ID() && 0 == getHOTEL_ID() && getPRICE() == 0 && null == getAMENITIES() && 0 == getCAPACITY() && null == getOUTSIDE_VIEW() && false == getEXTENDABLE() && null == getPROBLEMS()){
             setNoCriteria(true);
             return(null);
        }
@@ -98,110 +91,110 @@ public class SearchRooms implements Serializable {
     }
     
     
-    public int getRoom_Id() {
-        return room_id;
+    public int getROOM_ID() {
+        return ROOM_ID;
     }
 
-    public void setRoom_Id(int room_id) {
-        this.room_id = room_id;
-    }
-
-    /**
-     * @return the hotel_id
-     */
-    public int getHotel_Id() {
-        return hotel_id;
+    public void setROOM_ID(int ROOM_ID) {
+        this.ROOM_ID = ROOM_ID;
     }
 
     /**
-     * @param hotel_id the hotel_id to set
+     * @return the HOTEL_ID
      */
-    public void setHotel_Id(int hotel_id) {
-        this.hotel_id = hotel_id;
+    public int getHOTEL_ID() {
+        return HOTEL_ID;
     }
 
     /**
-     * @return the price
+     * @param HOTEL_ID the HOTEL_ID to set
      */
-    public int getPrice() {
-        return price;
+    public void setHOTEL_ID(int HOTEL_ID) {
+        this.HOTEL_ID = HOTEL_ID;
     }
 
     /**
-     * @param price the price to set
+     * @return the PRICE
      */
-    public void setPrice(int price) {
-        this.price = price;
+    public int getPRICE() {
+        return PRICE;
     }
 
     /**
-     * @return the amenities
+     * @param PRICE the PRICE to set
      */
-    public String getAmenities() {
-        return amenities;
+    public void setPRICE(int PRICE) {
+        this.PRICE = PRICE;
     }
 
     /**
-     * @param amenities the amenities to set
+     * @return the AMENITIES
      */
-    public void setAmenities(String amenities) {
-        this.amenities = amenities;
+    public String getAMENITIES() {
+        return AMENITIES;
     }
 
     /**
-     * @return the capacity
+     * @param AMENITIES the AMENITIES to set
      */
-    public int getCapacity() {
-        return capacity;
+    public void setAMENITIES(String AMENITIES) {
+        this.AMENITIES = AMENITIES;
     }
 
     /**
-     * @param capacity the capacity to set
+     * @return the CAPACITY
      */
-    public void setCapacity(int capacity) {
-        this.capacity = capacity;
+    public int getCAPACITY() {
+        return CAPACITY;
+    }
+
+    /**
+     * @param CAPACITY the CAPACITY to set
+     */
+    public void setCAPACITY(int CAPACITY) {
+        this.CAPACITY = CAPACITY;
     }
     
     /**
-     * @return the outside_view
+     * @return the OUTSIDE_VIEW
      */
-    public String getOutside_View() {
-        return outside_view;
+    public String getOUTSIDE_VIEW() {
+        return OUTSIDE_VIEW;
     }
 
     /**
-     * @param outside_view the outside_view to set
+     * @param OUTSIDE_VIEW the OUTSIDE_VIEW to set
      */
-    public void setOutside_View(String outside_view) {
-        this.outside_view = outside_view;
+    public void setOUTSIDE_VIEW(String OUTSIDE_VIEW) {
+        this.OUTSIDE_VIEW = OUTSIDE_VIEW;
     }
 
     /**
-     * @return the extendable
+     * @return the EXTENDABLE
      */
-    public Boolean getExtendable() {
-      return extendable;
+    public Boolean getEXTENDABLE() {
+      return EXTENDABLE;
     }
 
     /**
-     * @param extendable the extendable to set
+     * @param EXTENDABLE the EXTENDABLE to set
      */
-    public void setExtendable(Boolean extendable) {
-        this.extendable = extendable;
+    public void setEXTENDABLE(Boolean EXTENDABLE) {
+        this.EXTENDABLE = EXTENDABLE;
     }
 
   /**
-   * @return the problems
+   * @return the PROBLEMS
    */
-    public String getProblems() {
-        return problems;
+    public String getPROBLEMS() {
+        return PROBLEMS;
     }
 
     /**
-     * @param problems the problems to set
+     * @param PROBLEMS the PROBLEMS to set
      */
-    public void setProblems(String problems) {
-        this.problems = problems;
+    public void setPROBLEMS(String PROBLEMS) {
+        this.PROBLEMS = PROBLEMS;
     }
 
 

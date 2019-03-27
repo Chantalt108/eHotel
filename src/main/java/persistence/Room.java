@@ -31,7 +31,7 @@ import javax.persistence.TemporalType;
  * @author chant
  */
 @Entity
-@Table(name="Rooms")
+@Table(name="ROOMS")
 public class Room implements Serializable {
     private static long serialVersionUID = 1L;
 
@@ -50,55 +50,45 @@ public class Room implements Serializable {
     }
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int room_id;
-    private int hotel_id;
-    private int price;
-    private String amenities;
-    private int capacity;
-    private String outside_view;
-    private Boolean extendable;
-    private String problems;
-    
-//    @OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-//    @JoinColumn(name="PROPERTY_ADDRESS",
-//            referencedColumnName="id")
-//    private Address address;
-//    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, 
-//            mappedBy="property")
-//    private Collection<Image> pictures;
-//    @ManyToMany(mappedBy = "properties")
-//    private Set<UserAccount> users = new HashSet<>();
-    
+    private int ROOM_ID;
+    private int HOTEL_ID;
+    private int PRICE;
+    private String AMENITIES;
+    private int CAPACITY;
+    private String OUTSIDE_VIEW;
+    private Boolean EXTENDABLE;
+    private String PROBLEMS;
+     
     
     public Room() {
         
     }
     
-    public Room(int room_id, int hotel_id, int price, 
-            String amenities, int capacity, String outside_view, Boolean extendable,
-            String problems) {
-        this.room_id = room_id;
-        this.hotel_id = hotel_id;
-        this.price = price;
-        this.amenities = amenities;
-        this.capacity = capacity;
-        this.outside_view = outside_view;
-        this.extendable = extendable;
-        this.problems = problems;
+    public Room(int ROOM_ID, int HOTEL_ID, int PRICE, 
+            String AMENITIES, int CAPACITY, String OUTSIDE_VIEW, Boolean EXTENDABLE,
+            String PROBLEMS) {
+        this.ROOM_ID = ROOM_ID;
+        this.HOTEL_ID = HOTEL_ID;
+        this.PRICE = PRICE;
+        this.AMENITIES = AMENITIES;
+        this.CAPACITY = CAPACITY;
+        this.OUTSIDE_VIEW = OUTSIDE_VIEW;
+        this.EXTENDABLE = EXTENDABLE;
+        this.PROBLEMS = PROBLEMS;
      }
     
-    public int getRoom_Id() {
-        return room_id;
+    public int getROOM_ID() {
+        return ROOM_ID;
     }
 
-    public void setroom_id(int room_id) {
-        this.room_id = room_id;
+    public void setROOM_ID(int ROOM_ID) {
+        this.ROOM_ID = ROOM_ID;
     }
 
 //    @Override
 //    public int hashCode() {
 //        int hash = 0;
-//        hash += (room_id != null ? room_id.hashCode() : 0);
+//        hash += (ROOM_ID != null ? ROOM_ID.hashCode() : 0);
 //        return hash;
 //    }
 
@@ -109,7 +99,7 @@ public class Room implements Serializable {
 //            return false;
 //        }
 //        Room other = (Room) object;
-//        if ((this.room_id == null && other.room_id != null) || (this.room_id != null && !this.room_id.equals(other.room_id))) {
+//        if ((this.ROOM_ID == null && other.ROOM_ID != null) || (this.ROOM_ID != null && !this.ROOM_ID.equals(other.ROOM_ID))) {
 //            return false;
 //        }
 //        return true;
@@ -117,105 +107,105 @@ public class Room implements Serializable {
 
     @Override
     public String toString() {
-        return "model.Property[ room_id=" + room_id + " ]";
+        return "model.Property[ ROOM_ID=" + ROOM_ID + " ]";
     }
 
     /**
-     * @return the hotel_id
+     * @return the HOTEL_ID
      */
-    public int getHotel_Id() {
-        return hotel_id;
+    public int getHOTEL_ID() {
+        return HOTEL_ID;
     }
 
     /**
-     * @param hotel_id the hotel_id to set
+     * @param HOTEL_ID the HOTEL_ID to set
      */
-    public void setHotel_Id(int hotel_id) {
-        this.hotel_id = hotel_id;
+    public void setHOTEL_ID(int HOTEL_ID) {
+        this.HOTEL_ID = HOTEL_ID;
     }
 
     /**
-     * @return the price
+     * @return the PRICE
      */
-    public int getPrice() {
-        return price;
+    public int getPRICE() {
+        return PRICE;
     }
 
     /**
-     * @param price the price to set
+     * @param PRICE the PRICE to set
      */
-    public void setPrice(int price) {
-        this.price = price;
+    public void setPRICE(int PRICE) {
+        this.PRICE = PRICE;
     }
 
     /**
-     * @return the amenities
+     * @return the AMENITIES
      */
-    public String getAmenities() {
-        return amenities;
+    public String getAMENITIES() {
+        return AMENITIES;
     }
 
     /**
-     * @param amenities the amenities to set
+     * @param AMENITIES the AMENITIES to set
      */
-    public void setAmenities(String amenities) {
-        this.amenities = amenities;
+    public void setAMENITIES(String AMENITIES) {
+        this.AMENITIES = AMENITIES;
     }
 
     /**
-     * @return the capacity
+     * @return the CAPACITY
      */
-    public int getCapacity() {
-        return capacity;
+    public int getCAPACITY() {
+        return CAPACITY;
     }
 
     /**
-     * @param capacity the capacity to set
+     * @param CAPACITY the CAPACITY to set
      */
-    public void setCapacity(int capacity) {
-        this.capacity = capacity;
+    public void setCAPACITY(int CAPACITY) {
+        this.CAPACITY = CAPACITY;
     }
     
     /**
-     * @return the outside_view
+     * @return the OUTSIDE_VIEW
      */
-    public String getOutside_View() {
-        return outside_view;
+    public String getOUTSIDE_VIEW() {
+        return OUTSIDE_VIEW;
     }
 
     /**
-     * @param outside_view the outside_view to set
+     * @param OUTSIDE_VIEW the OUTSIDE_VIEW to set
      */
-    public void setOutside_View(String outside_view) {
-        this.outside_view = outside_view;
+    public void setOUTSIDE_VIEW(String OUTSIDE_VIEW) {
+        this.OUTSIDE_VIEW = OUTSIDE_VIEW;
     }
 
     /**
-     * @return the extendable
+     * @return the EXTENDABLE
      */
-    public Boolean getExtendable() {
-      return extendable;
+    public Boolean getEXTENDABLE() {
+      return EXTENDABLE;
     }
 
     /**
-     * @param extendable the extendable to set
+     * @param EXTENDABLE the EXTENDABLE to set
      */
-    public void setExtendable(Boolean extendable) {
-        this.extendable = extendable;
+    public void setEXTENDABLE(Boolean EXTENDABLE) {
+        this.EXTENDABLE = EXTENDABLE;
     }
 
   /**
-   * @return the problems
+   * @return the PROBLEMS
    */
-    public String getProblems() {
-        return problems;
+    public String getPROBLEMS() {
+        return PROBLEMS;
     }
 
     /**
-     * @param problems the problems to set
+     * @param PROBLEMS the PROBLEMS to set
      */
-    public void setProblems(String problems) {
-        this.problems = problems;
+    public void setPROBLEMS(String PROBLEMS) {
+        this.PROBLEMS = PROBLEMS;
     }
 
   
