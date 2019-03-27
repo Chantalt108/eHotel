@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Room Results</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="./template.xhtml">
+        <ui:define name="content">
+            <h:form>
+            <h:panelGroup id="results">
+                <h:dataTable  rendered="#{searchRooms.showResults}" border="2" bgcolor="yellow" id="resultTable" value="#{searchRooms.lookupResults}" var="room">
+                <h:column>
+                    <f:facet name="header">Room ID</f:facet>
+                    #{room.ROOM_ID}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Hotel ID</f:facet>
+                    #{room.HOTEL_ID}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Price</f:facet>
+                    #{room.PRICE}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Amenities</f:facet>
+                    #{room.AMENITIES}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Capacity</f:facet>
+                    #{room.CAPACITY}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Outside View</f:facet>
+                    #{room.OUTSIDE_VIEW}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Extendable</f:facet>
+                    #{room.EXTENDABLE}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Problems</f:facet>
+                    #{room.PROBLEMS}
+                </h:column>
+                </h:dataTable>
+                </h:panelGroup>
+            </h:form>
+            
+            <h:outputText rendered="#{searchRooms.foundNoResults}" style="color:red" id="noResultsMessage" value="No results found"/>
+                 
+        </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
