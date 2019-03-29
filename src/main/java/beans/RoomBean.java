@@ -5,35 +5,21 @@
  */
 package beans;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.io.Serializable;
-import java.util.Collection;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
-import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
-import javax.faces.event.PhaseId;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.servlet.http.HttpSession;
-import org.apache.commons.io.IOUtils;
-import org.primefaces.event.FileUploadEvent;
-import org.primefaces.model.DefaultStreamedContent;
-import org.primefaces.model.StreamedContent;
-import org.primefaces.model.UploadedFile;
-//import persistence.Address;
 import persistence.Room;
 import persistence.UserAccount;
 
@@ -69,19 +55,19 @@ public class RoomBean implements Serializable {
      */
     public RoomBean() {
                 
-        types = new HashMap<String, String>();
+        types = new HashMap<>();
         types.put("", "");
         types.put("Mountain", "Mountain");
         types.put("Sea", "Sea");
         
                
-        types = new HashMap<String, String>();
+        types = new HashMap<>();
         types.put("Yes", "Yes");
         types.put("No", "No");
              
     }
-
-     /**
+    
+    /**
      * @return the ROOM_ID
      */
     public int getROOM_ID() {
@@ -195,14 +181,10 @@ public class RoomBean implements Serializable {
     
     /**
      * Add the user to the database
-     * @param actionEvent
      * @return 
      */
     public String doAddRoom() {
-        
-        HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-        UserAccount u = (UserAccount) session.getAttribute("User");
-        
+              
         Room room = new Room(ROOM_ID, HOTEL_ID, PRICE, AMENITIES, CAPACITY, OUTSIDE_VIEW, EXTENDABLE, PROBLEMS);
         
         try {

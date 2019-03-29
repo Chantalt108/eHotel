@@ -1,5 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
+ * To change this license header, choose License Headers in Project eHotel.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -11,7 +11,6 @@ import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.sql.Date;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,7 +21,6 @@ import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.servlet.http.HttpSession;
 import persistence.UserAccount;
 
 /**
@@ -119,20 +117,6 @@ public class SignInBean {
     public void setSsn(int ssn) {
         this.ssn = ssn;
     }
-    
-//    /**
-//     * @return the registrationDate
-//     */
-//    public Date getRegistrationDate() {
-//        return registrationDate;
-//    }
-//
-//    /**
-//     * @param registrationDate the registrationDate to set
-//     */
-//    public void setRegistrationDate(Date registrationDate) {
-//        this.registrationDate = registrationDate;
-//    }
 
     /**
      * @return the password

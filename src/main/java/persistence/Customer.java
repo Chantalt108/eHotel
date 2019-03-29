@@ -1,5 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
+ * To change this license header, choose License Headers in Project eHotel.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -50,26 +50,6 @@ public class Customer implements Serializable {
     @Lob
     private byte[] salt; // the salt used for this account
     
-//    @ManyToMany(cascade = { 
-//        CascadeType.PERSIST, 
-//        CascadeType.MERGE
-//    })
-//    @JoinTable(name = "UserAccount_Property",
-//        joinColumns = @JoinColumn(name = "userId"),
-//        inverseJoinColumns = @JoinColumn(name = "propertyId")
-//    )
-//    private Set<Property> properties = new HashSet<>();
-//    
-//    public void addProperty(Property property){
-//        properties.add(property);
-//        property.getUsers().add(this);
-//    } 
-//    
-//    public void removeProperty(Property property){
-//        properties.remove(property);
-//        property.getUsers().remove(this);
-//    } 
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -197,19 +177,4 @@ public class Customer implements Serializable {
     public void setSalt(byte[] salt) {
         this.salt = salt;
     }
-
-//    /**
-//     * @return the visitingList
-//     */
-//    public Set getProperties() {
-//        return properties;
-//    }
-//
-//    /**
-//     * @param visitingList the visitingList to set
-//     */
-//    public void setProperties(Set properties) {
-//        this.properties = properties;
-//    }
-    
 }

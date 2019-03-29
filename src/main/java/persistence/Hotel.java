@@ -1,30 +1,16 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
+ * To change this license header, choose License Headers in Project eHotel.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package persistence;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 /**
  *
@@ -56,18 +42,7 @@ public class Hotel implements Serializable {
     private int num_rooms;
     private String address;
     private String email;
-    private String phone;
-    
-//    @OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-//    @JoinColumn(name="PROPERTY_ADDRESS",
-//            referencedColumnName="id")
-//    private Address address;
-//    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, 
-//            mappedBy="property")
-//    private Collection<Image> pictures;
-//    @ManyToMany(mappedBy = "properties")
-//    private Set<UserAccount> users = new HashSet<>();
-    
+    private String phone;  
     
     public Hotel() {
         
@@ -84,26 +59,6 @@ public class Hotel implements Serializable {
         this.phone = phone;
         }
     
-    //    @Override
-//    public int hashCode() {
-//        int hash = 0;
-//        hash += (room_id != null ? room_id.hashCode() : 0);
-//        return hash;
-//    }
-
-//    @Override
-//    public boolean equals(Object object) {
-//        // TODO: Warning - this method won't work in the case the id fields are not set
-//        if (!(object instanceof Room)) {
-//            return false;
-//        }
-//        Room other = (Room) object;
-//        if ((this.room_id == null && other.room_id != null) || (this.room_id != null && !this.room_id.equals(other.room_id))) {
-//            return false;
-//        }
-//        return true;
-//    }
-
     @Override
     public String toString() {
         return "model.Property[ room_id=" + hotel_id + " ]";

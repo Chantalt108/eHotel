@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <f:metadata>
+        <f:viewParam id="roomId" name="propertyId" value="#{viewRoomBean.propertyId}" required="true">
+        </f:viewParam>
+        <f:viewAction action="#{viewRoomBean.onload}" />
+    </f:metadata>
+    <h:head>
+        <title>View Property</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="./template.xhtml">
+
+        <ui:define name="content">
+        <p:tooltip showEvent="focus" hideEvent="blur"  />
+        <p:growl autoUpdate="true"/>
+        <h:form id="form1">
+                    <p:panel id="information" header="#{viewRoomBean.getAddressString()}" style="margin-bottom:20px">
+                        
+                        <p:panel style="margin-bottom:20px">
+                         <h:panelGrid  columns="2">
+                            
+                             <h:panelGrid  columns="1">
+                             <p:galleria  panelWidth="500" value="#{viewRoomBean.imageIds}" var="imageId">
+                                <p:graphicImage value="#{viewRoomBean.streamedImage}" width="500" >
+                                    <f:param name="id" value="#{imageId}" />
+                                </p:graphicImage>
+                            </p:galleria>
+                            </h:panelGrid>
+                             
+                             <h:panelGrid  columns="1">
+                                <h:outputText style="font-weight:bold" value="Description: " />
+                                <h:inputTextarea cols="70" rows="10" readonly="true" value="#{viewRoomBean.description}" />
+                            </h:panelGrid>
+                            
+                         </h:panelGrid>
+                        </p:panel>
+                        <p:panel id="info" header="Information" style="margin-bottom:20px">
+                        <h:panelGrid  columns="1">
+                            <h:panelGrid  columns="2">
+                                <h:outputText style="font-weight:bold" value="Type: " />
+                                <h:outputText value="#{viewRoomBean.type}"/>
+                            </h:panelGrid>
+                            <h:panelGrid  columns="2">
+                            <h:outputText style="font-weight:bold" value="Price of Rent: " />
+                            <h:outputText value="$#{viewRoomBean.priceOfRent}"/>
+                            </h:panelGrid>
+                            <h:panelGrid  columns="2">
+                            <h:outputText style="font-weight:bold" value="Total number of rooms: " />
+                            <h:outputText value="#{viewRoomBean.numTotalRooms}"/>
+                            </h:panelGrid>
+                            <h:panelGrid  columns="2">
+                            <h:outputText style="font-weight:bold" value="Number of Bathrooms: " />
+                            <h:outputText value="#{viewRoomBean.numBathrooms}"/>
+                            </h:panelGrid>
+                            <h:panelGrid  columns="2">
+                            <h:outputText style="font-weight:bold" value="Number of Bedrooms: " />
+                            <h:outputText value="#{viewRoomBean.numBedrooms}"/>
+                            </h:panelGrid>
+                            <h:panelGrid  columns="2">
+                            <h:outputText style="font-weight:bold" value="Date available: " />
+                            <h:outputText value="#{viewRoomBean.availableDate}"/>
+                            </h:panelGrid>
+                            
+                        </h:panelGrid>
+                        </p:panel>
+                         <p:panel id="addressInfo" header="Address" style="margin-bottom:20px">
+                        <h:panelGrid  columns="1">  
+                            <h:panelGrid  columns="2">
+                            <h:outputText style="font-weight:bold" value="Number:"/>
+                            <h:outputText value="#{viewRoomBean.number}" />
+                            </h:panelGrid>
+                            <h:panelGrid  columns="2">
+                            <h:outputText style="font-weight:bold" value="Street:"/>
+                            <h:outputText value="#{viewRoomBean.street}" />
+                            </h:panelGrid>
+                            <h:panelGrid  columns="2">
+                            <h:outputText style="font-weight:bold" value="Unit:"/>
+                            <h:outputText value="#{viewRoomBean.unit}" />
+                            </h:panelGrid>
+                            <h:panelGrid  columns="2">
+                            <h:outputText style="font-weight:bold" value="City:"/>
+                            <h:outputText value="#{viewRoomBean.city}" />
+                            </h:panelGrid>
+                            <h:panelGrid  columns="2">
+                            <h:outputText style="font-weight:bold" value="Province:"/>
+                            <h:outputText value="#{viewRoomBean.province}" />
+                            </h:panelGrid>
+                            <h:panelGrid  columns="2">
+                            <h:outputText style="font-weight:bold" value="Postal Code:"/>
+                            <h:outputText value="#{viewRoomBean.postalCode}" />
+                            </h:panelGrid>
+                        </h:panelGrid>
+                        </p:panel>
+                        
+                    </p:panel>
+            
+            <p:commandButton id="updateBtn"  ajax="false" rendered="#{viewRoomBean.showUpdate}" action="#{viewRoomBean.goToUpdateProperty}" value="Update Property"/>
+            <p:commandButton id="deleteBtn"  ajax="false" rendered="#{viewRoomBean.showDelete}" action="#{viewRoomBean.doDeleteProperty}" value="Delete Property"/>
+            <p:commandButton id="addVisitingListBtn"  ajax="false" rendered="#{viewRoomBean.showAddVisitingList}" action="#{viewRoomBean.addToVisitingList()}" value="Add to Visiting List"/>
+            <p:commandButton id="RemoveVisitingListBtn"  ajax="false" rendered="#{viewRoomBean.showRemoveVisitingList}" action="#{viewRoomBean.removeFromVisitingList()}" value="Remove from Visiting List"/>
+
+        </h:form>
+        </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

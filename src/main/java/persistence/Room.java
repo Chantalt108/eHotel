@@ -1,30 +1,16 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
+ * To change this license header, choose License Headers in Project eHotel.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package persistence;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 /**
  *
@@ -85,29 +71,9 @@ public class Room implements Serializable {
         this.ROOM_ID = ROOM_ID;
     }
 
-//    @Override
-//    public int hashCode() {
-//        int hash = 0;
-//        hash += (ROOM_ID != null ? ROOM_ID.hashCode() : 0);
-//        return hash;
-//    }
-
-//    @Override
-//    public boolean equals(Object object) {
-//        // TODO: Warning - this method won't work in the case the id fields are not set
-//        if (!(object instanceof Room)) {
-//            return false;
-//        }
-//        Room other = (Room) object;
-//        if ((this.ROOM_ID == null && other.ROOM_ID != null) || (this.ROOM_ID != null && !this.ROOM_ID.equals(other.ROOM_ID))) {
-//            return false;
-//        }
-//        return true;
-//    }
-
     @Override
     public String toString() {
-        return "model.Property[ ROOM_ID=" + ROOM_ID + " ]";
+        return "model.Room[ ROOM_ID=" + ROOM_ID + " ]";
     }
 
     /**

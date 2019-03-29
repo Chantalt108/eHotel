@@ -11,7 +11,6 @@ import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.sql.Date;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,7 +21,6 @@ import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.servlet.http.HttpSession;
 import persistence.Employee;
 import persistence.UserAccount;
 
@@ -53,11 +51,15 @@ public class EmployeeSignInBean {
         this.userType = userType.EMPLOYEE;
     }
 
-    
+    /**
+     * @return the userType
+     */
     public UserType getUserType() {
         return userType;
     }
-
+    /**
+     * @param userType the userType to set
+     */
     public void setUserType(UserType userType) {
         this.userType = userType;
     }
@@ -136,20 +138,6 @@ public class EmployeeSignInBean {
         this.ssn = ssn;
     }
     
-//    /**
-//     * @return the registrationDate
-//     */
-//    public Date getRegistrationDate() {
-//        return registrationDate;
-//    }
-//
-//    /**
-//     * @param registrationDate the registrationDate to set
-//     */
-//    public void setRegistrationDate(Date registrationDate) {
-//        this.registrationDate = registrationDate;
-//    }
-
     /**
      * @return the password
      */

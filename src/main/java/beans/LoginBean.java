@@ -1,5 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
+ * To change this license header, choose License Headers in Project eHotel.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -33,8 +33,7 @@ public class LoginBean {
     private String status;
     @PersistenceContext(unitName = "CSI2132_eHotel_war_1.0-SNAPSHOTPU")
     private EntityManager em;
-    @Resource
-    private javax.transaction.UserTransaction utx;
+
     /**
      * Creates a new instance of LoginBean
      */

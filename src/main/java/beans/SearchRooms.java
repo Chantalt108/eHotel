@@ -1,5 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Rooms.
+ * To change this license header, choose License Headers in Project eHotel.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -25,7 +25,6 @@ public class SearchRooms implements Serializable {
     @PersistenceContext(unitName = "CSI2132_eHotel_war_1.0-SNAPSHOTPU")
     EntityManager em;
     @Resource
-    private javax.transaction.UserTransaction utx;
     
     List<Room> lookupResults;
     private int ROOM_ID;

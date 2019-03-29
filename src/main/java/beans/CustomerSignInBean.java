@@ -1,5 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
+ * To change this license header, choose License Headers in Project eHotel.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -22,7 +22,6 @@ import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.servlet.http.HttpSession;
 import persistence.UserAccount;
 import persistence.Customer;
 
@@ -54,11 +53,16 @@ public class CustomerSignInBean {
         this.registrationDate = date;
     }
 
-    
+    /**
+     * @return the userType
+     */
     public UserType getUserType() {
         return userType;
     }
 
+    /**
+     * @param userType the userType to set
+     */
     public void setUserType(UserType userType) {
         this.userType = userType;
     }
@@ -137,20 +141,6 @@ public class CustomerSignInBean {
         this.ssn = ssn;
     }
     
-//    /**
-//     * @return the registrationDate
-//     */
-//    public Date getRegistrationDate() {
-//        return registrationDate;
-//    }
-//
-//    /**
-//     * @param registrationDate the registrationDate to set
-//     */
-//    public void setRegistrationDate(Date registrationDate) {
-//        this.registrationDate = registrationDate;
-//    }
-
     /**
      * @return the password
      */
@@ -192,7 +182,6 @@ public class CustomerSignInBean {
             acc.setSsn(ssn);
             acc.setAddress(address);
             
-            //acc.setRegistrationDate((registrationDate));
             // randomly generate salt value
             final Random r = new SecureRandom();
             byte[] salt = new byte[32];

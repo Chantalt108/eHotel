@@ -1,5 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
+ * To change this license header, choose License Headers in Project eHotel.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -31,7 +31,7 @@ public class HotelDBHelper {
         //Set conditions for the WHERE clause of the Query
         
         
-        if(!(0 == searchHotel.getHotel_Id())){ //If the room_id field was used by the User
+        if(!(0 == searchHotel.getHotel_Id())){ //If the hotel_id field was used by the User
             whereClauseConditions += " h.hotel_id = :hotelNum";
         }
         if(!(0 == searchHotel.getChain_Id())){
@@ -95,12 +95,6 @@ public class HotelDBHelper {
         }
         return performQuery(query);
     }
-
-//    public static List<Room> getOwenedProperties(EntityManager em, String userId){
-//        String queryString = "SELECT p FROM Property p WHERE p.ownerId = '" + userId +"'";
-//        Query ownerQuery = em.createQuery(queryString);
-//        return performQuery(ownerQuery);
-//    }
     
     private static List<Hotel> performQuery(final Query query) {
         List<Hotel> resultList = query.getResultList();

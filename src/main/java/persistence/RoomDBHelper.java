@@ -1,5 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
+ * To change this license header, choose License Headers in Project eHotel.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -46,6 +46,8 @@ public class RoomDBHelper {
             if(!"".equals(whereClauseConditions)){whereClauseConditions += " AND";} //If a Condition has been added already
             whereClauseConditions += " r.AMENITIES = :rAmenities";
         }
+        
+        //To be implemented later time permitting
 //        if(!(searchRoom.getCAPACITY() == 0)){
 //            if(!"".equals(whereClauseConditions)){whereClauseConditions += " AND";} //If a Condition has been added already
 //            whereClauseConditions += " r.CAPACITY = rCapacity";

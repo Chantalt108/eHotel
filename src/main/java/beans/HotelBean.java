@@ -1,39 +1,25 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
+ * To change this license header, choose License Headers in Project eHotel.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package beans;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.io.Serializable;
-import java.util.Collection;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
-import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
-import javax.faces.event.PhaseId;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.servlet.http.HttpSession;
-import org.apache.commons.io.IOUtils;
-import org.primefaces.event.FileUploadEvent;
-import org.primefaces.model.DefaultStreamedContent;
-import org.primefaces.model.StreamedContent;
-import org.primefaces.model.UploadedFile;
-//import persistence.Address;
 import persistence.Hotel;
 import persistence.UserAccount;
 
@@ -65,7 +51,7 @@ public class HotelBean implements Serializable {
     private Map<String,String> types;
     
     /**
-     * Creates a new instance of UserProfileBean
+     * Creates a new instance of HotelBean
      */
     public HotelBean() {
                 
@@ -177,10 +163,7 @@ public class HotelBean implements Serializable {
      * @return 
      */
     public String doAddHotel() {
-        
-        HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-        UserAccount u = (UserAccount) session.getAttribute("User");
-        
+                     
         Hotel hotel = new Hotel(hotel_id, chain_id, rating, num_rooms, address, email, phone);
         
         try {
