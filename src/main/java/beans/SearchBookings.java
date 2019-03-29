@@ -23,7 +23,7 @@ import persistence.BookingDBHelper;
 @Named(value = "searchBookings")
 @RequestScoped
 public class SearchBookings implements Serializable {
-    @PersistenceContext(unitName = "CSI2132_ebooking_war_1.0-SNAPSHOTPU")
+    @PersistenceContext(unitName = "CSI2132_eHotel_war_1.0-SNAPSHOTPU")
     EntityManager em;
     @Resource
     private javax.transaction.UserTransaction utx;
@@ -41,7 +41,7 @@ public class SearchBookings implements Serializable {
     
     
     /**
-     * Creates a new instance of searchRooms
+     * Creates a new instance of searchBookings
      */
     public SearchBookings() {
         
@@ -63,7 +63,7 @@ public class SearchBookings implements Serializable {
        setLookupResults(results);
        if(results == null || results.isEmpty()){setFoundNoResults((Boolean) true);}
         setNoCriteria(false);
-       return("viewbookings");
+       return("viewBookings");
     }
     
     public void setLookupResults(List<Booking> results) {

@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Search Bookings</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="./template.xhtml">
+        <ui:define name="content">
+        <h:form>
+            <h:outputText value="Search Bookings" escape="false"/>
+            <hr></hr>
+            <h:panelGrid columns="2" >
+                <h:outputText value="Booking ID" escape="false"/>
+                <h:inputText value="#{searchBookings.booking_Id}" />
+                <h:outputText value="Room ID" escape="false"/>
+                <h:inputText value="#{searchBookings.room_Id}" />
+                <h:outputText value="Customer ID" escape="false"/>
+                <h:inputText value="#{searchBookings.cust_Id}" />
+                <h:outputText value="Employee ID" escape="false"/>
+                <h:inputText value="#{searchBookings.emp_Id}" />
+                <h:outputText value="Is currently being rented?" escape="false"/>
+                <h:inputText value="#{searchBookings.is_Renting}" />
+            </h:panelGrid>
+            
+            <h:commandButton value="Search" action="#{searchBookings.search}"></h:commandButton>
+        </h:form>
+        <h:outputText rendered="#{searchBookings.noCriteria}" style="color:red" id="noResultsMessage" value="At least one criteria must be filled"/>
+        </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

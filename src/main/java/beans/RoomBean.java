@@ -1,5 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
+ * To change this license header, choose License Headers in Project eHotel.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -19,9 +19,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.servlet.http.HttpSession;
 import persistence.Room;
-import persistence.UserAccount;
 
 
 /**
@@ -47,11 +45,11 @@ public class RoomBean implements Serializable {
     private javax.transaction.UserTransaction utx;
         
     private List<Room> lookupResults;
-    private Map<String,Map<String,String>> data = new HashMap<String, Map<String,String>>();
+    private Map<String,Map<String,String>> data = new HashMap<>();
     private Map<String,String> types;
     
     /**
-     * Creates a new instance of UserProfileBean
+     * Creates a new instance of RoomBean
      */
     public RoomBean() {
                 

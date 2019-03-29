@@ -1,5 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
+ * To change this license header, choose License Headers in Project eHotel.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -22,6 +22,9 @@ import javax.persistence.Temporal;
 @Table(name = "BOOKINGS")
 public class Booking implements Serializable{
     private static long serialVersionUID = 1L;
+
+    public Booking() {
+    }
 
     /**
      * @return the serialVersionUID
