@@ -6,10 +6,16 @@
 package persistence;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -37,6 +43,8 @@ public class Room implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int ROOM_ID;
+//    @ManyToOne
+//    @JoinColumn(name = "HOTEL_ID")
     private int HOTEL_ID;
     private int PRICE;
     private String AMENITIES;
@@ -44,7 +52,8 @@ public class Room implements Serializable {
     private String OUTSIDE_VIEW;
     private Boolean EXTENDABLE;
     private String PROBLEMS;
-     
+    @ManyToMany(mappedBy = "rooms")
+    private Set<UserAccount> users = new HashSet<>();
     
     public Room() {
         
@@ -62,6 +71,20 @@ public class Room implements Serializable {
         this.EXTENDABLE = EXTENDABLE;
         this.PROBLEMS = PROBLEMS;
      }
+    
+    /**
+     * @return the users
+     */
+    public Set<UserAccount> getUsers() {
+        return users;
+    }
+
+    /**
+     * @param users the users to set
+     */
+    public void setUsers(Set<UserAccount> users) {
+        this.users = users;
+    }
     
     public int getROOM_ID() {
         return ROOM_ID;

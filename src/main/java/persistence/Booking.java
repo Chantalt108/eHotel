@@ -42,7 +42,7 @@ public class Booking implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int booking_id;
+    private long booking_id;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date checkin_date;
     @Temporal(javax.persistence.TemporalType.DATE)
@@ -52,7 +52,7 @@ public class Booking implements Serializable{
     private int cust_id;
     private int emp_id;
     
-    public Booking(int booking_id, Date checkin_date, Date checkout_date, Boolean is_renting, int room_id, int cust_id, int emp_id){
+    public Booking(long booking_id, Date checkin_date, Date checkout_date, Boolean is_renting, int room_id, int cust_id, int emp_id){
         this.booking_id = booking_id;
         this.checkin_date = checkin_date;
         this.checkout_date = checkout_date;
@@ -64,14 +64,14 @@ public class Booking implements Serializable{
     /**
      * @return the booking_id
      */
-    public int getBooking_Id(){
+    public long getBooking_Id(){
         return booking_id;
     }
     
     /**
      * @param booking_id the booking_id to set
      */
-    public void setBooking_Id(int booking_id){
+    public void setBooking_Id(long booking_id){
         this.booking_id = booking_id;
     }
     

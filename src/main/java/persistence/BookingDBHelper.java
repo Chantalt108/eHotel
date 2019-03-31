@@ -9,8 +9,11 @@ package persistence;
 import beans.SearchBookings;
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.servlet.http.HttpSession;
+import javax.transaction.UserTransaction;
 
 /**
  *
@@ -22,6 +25,22 @@ public class BookingDBHelper {
         return h;
     }
     
+    public static void addToBooking(UserTransaction utx, EntityManager em, String roomId){
+        HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+        UserAccount user = (UserAccount) session.getAttribute("User");
+        user.addRoom(RoomDBHelper.findRoom(em, roomId));
+        merge(user, utx, em);
+    }
+    
+    public static void merge(Object object, UserTransaction utx, EntityManager em) {
+        try {
+            utx.begin();
+            em.merge(object);
+            utx.commit();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
     
     public static List<Booking> findBookingsWithCriteria(EntityManager em, SearchBookings searchBooking){
         String initQueryString = "SELECT b FROM Booking b";

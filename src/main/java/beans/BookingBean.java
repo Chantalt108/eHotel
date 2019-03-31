@@ -10,14 +10,18 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import persistence.Booking;
+import persistence.BookingDBHelper;
 
 /**
  *
@@ -27,13 +31,15 @@ import persistence.Booking;
 @ManagedBean(name="BookingBean")
 @RequestScoped
 public class BookingBean implements Serializable{
-    private int booking_id;
+    private long booking_id;
     private int room_id;
     private int cust_id;
     private int emp_id;
     private Date checkin_date;
     private Date checkout_date;
     private Boolean is_renting;
+    private Boolean addedSuccessfully;
+    private Boolean addedUnsuccessfully;
     
     @PersistenceContext(unitName = "CSI2132_eHotel_war_1.0-SNAPSHOTPU")
     private EntityManager em;
@@ -42,6 +48,7 @@ public class BookingBean implements Serializable{
     
     private List<Booking> lookupResults;
     private Map<String, Map<String, String>> data = new HashMap<>();
+    private Map<String,String> types;
     
     public BookingBean(){
         
@@ -50,14 +57,14 @@ public class BookingBean implements Serializable{
     /**
      * @return the booking_id
      */
-    public int getBooking_Id(){
+    public long getBooking_Id(){
         return booking_id;
     }
     
     /**
      * @param booking_id the booking_id to set
      */
-    public void setBooking_Id(int booking_id){
+    public void setBooking_Id(long booking_id){
         this.booking_id = booking_id;
     }
     
@@ -143,5 +150,102 @@ public class BookingBean implements Serializable{
      */
     public void setEmp_Id(int emp_id) {
         this.emp_id = emp_id;
+    }
+    
+    /**
+     * Add the user to the database
+     * @return 
+     */
+    public String doAddBooking() {
+              
+        try{
+            BookingDBHelper.addToBooking(utx, em, Integer.toString(this.room_id));
+            setAddedSuccessfully((Boolean) true);
+            setAddedUnsuccessfully((Boolean) false);
+        }catch(RuntimeException e){
+            setAddedSuccessfully((Boolean) false);
+            setAddedUnsuccessfully((Boolean) true);
+            e.printStackTrace();
+        }
+        return(null);
+        
+        
+        
+//        Booking booking = new Booking(booking_id, checkin_date, checkout_date, is_renting, room_id, cust_id, emp_id);
+//        
+//        try {
+//           
+//           persist(booking); 
+//           String msg = "Booking Created Successfully";
+//           FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, msg, msg));
+//           FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+//       
+//           return (msg);
+//        } catch(RuntimeException e) {
+//           String msg = "Error While Creating Room";
+//           FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, msg, msg));
+//           FacesContext.getCurrentInstance().getExternalContext()
+//                .getFlash().setKeepMessages(true);
+//        }
+//        return null;
+    }
+    
+    /**
+     * @return the addedSuccessfully
+     */
+    public Boolean getAddedSuccessfully() {
+        return addedSuccessfully;
+    }
+
+    /**
+     * @param addedSuccessfully the addedSuccessfully to set
+     */
+    public void setAddedSuccessfully(Boolean addedSuccessfully) {
+        this.addedSuccessfully = addedSuccessfully;
+    }
+
+    /**
+     * @return the addedUnsuccessfully
+     */
+    public Boolean getAddedUnsuccessfully() {
+        return addedUnsuccessfully;
+    }
+
+    /**
+     * @param addedUnsuccessfully the addedUnsuccessfully to set
+     */
+    public void setAddedUnsuccessfully(Boolean addedUnsuccessfully) {
+        this.addedUnsuccessfully = addedUnsuccessfully;
+    }
+    
+    public void persist(Object object) {
+        try {
+            utx.begin();
+            em.persist(object);
+            utx.commit();
+        } catch (Exception e) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", e);
+            throw new RuntimeException(e);
+        }
+    }
+    
+    public void setLookupResults(List<Booking> results) {
+        this.lookupResults = results;
+    }
+    
+    public List<Booking> getLookupResults() {
+        return lookupResults;
+    }
+    // show results if any
+    public boolean getShowResults() {
+        return (lookupResults != null) && !lookupResults.isEmpty();
+    }
+    
+    public Map<String, Map<String, String>> getData() {
+        return data;
+    }
+    
+    public Map<String, String> getTypes() {
+        return types;
     }
 }

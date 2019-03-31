@@ -68,25 +68,21 @@ public class MenuView {
         itemIndex.setOutcome("index");
         firstSubmenu.addElement(itemIndex);
                
-        DefaultMenuItem itemViewAllRooms = new DefaultMenuItem("View All Rooms");
-        itemViewAllRooms.setOutcome("viewAllRooms");
-        firstSubmenu.addElement(itemViewAllRooms);
+//        DefaultMenuItem itemViewAllRooms = new DefaultMenuItem("View All Rooms");
+//        itemViewAllRooms.setOutcome("viewAllRooms");
+//        firstSubmenu.addElement(itemViewAllRooms);
         
         DefaultMenuItem itemAddRooms = new DefaultMenuItem("Add Rooms");
         itemAddRooms.setOutcome("addRoom");
         firstSubmenu.addElement(itemAddRooms);
         
-        DefaultMenuItem itemSearchBookings = new DefaultMenuItem("Search Bookings");
-        itemSearchBookings.setOutcome("searchBookings");
-        firstSubmenu.addElement(itemSearchBookings);
+        DefaultMenuItem itemSearchRooms = new DefaultMenuItem("Search Rooms");
+        itemSearchRooms.setOutcome("searchRooms");
+        firstSubmenu.addElement(itemSearchRooms);
         
-        DefaultMenuItem itemAddBookings = new DefaultMenuItem("Add Bookings");
-        itemAddBookings.setOutcome("addBooking");
-        firstSubmenu.addElement(itemAddBookings);
- 
         model.addElement(firstSubmenu);
         
-        DefaultSubMenu secondSubmenu = new DefaultSubMenu(user.getName());
+        DefaultSubMenu secondSubmenu = new DefaultSubMenu(user.getName() + " - " + user.getUserType());
         
         DefaultMenuItem itemLogout = new DefaultMenuItem("Logout");
         itemLogout.setCommand("#{menuView.logout}");
@@ -106,11 +102,7 @@ public class MenuView {
         DefaultMenuItem itemSearchRooms = new DefaultMenuItem("Search Rooms");
         itemSearchRooms.setOutcome("searchRooms");
         firstSubmenu.addElement(itemSearchRooms);
-        
-        DefaultMenuItem itemBookRooms = new DefaultMenuItem("Add Booking");
-        itemBookRooms.setOutcome("addBooking");
-        firstSubmenu.addElement(itemBookRooms);
-        
+                
         model.addElement(firstSubmenu);
         
         

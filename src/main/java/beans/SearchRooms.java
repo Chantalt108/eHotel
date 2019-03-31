@@ -25,6 +25,7 @@ public class SearchRooms implements Serializable {
     @PersistenceContext(unitName = "CSI2132_eHotel_war_1.0-SNAPSHOTPU")
     EntityManager em;
     @Resource
+    private javax.transaction.UserTransaction utx;
     
     List<Room> lookupResults;
     private int ROOM_ID;

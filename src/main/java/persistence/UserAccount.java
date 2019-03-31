@@ -8,9 +8,15 @@ package persistence;
 
 import enumerators.UserType;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 /**
@@ -46,6 +52,26 @@ public class UserAccount implements Serializable {
     private byte[] password; // salted + hashed password
     @Lob
     private byte[] salt; // the salt used for this account
+    
+    @ManyToMany(cascade = { 
+        CascadeType.PERSIST, 
+        CascadeType.MERGE
+    })
+    @JoinTable(name = "UserAccount_Property",
+        joinColumns = @JoinColumn(name = "userId"),
+        inverseJoinColumns = @JoinColumn(name = "propertyId")
+    )
+    private Set<Room> rooms = new HashSet<>();
+    
+    public void addRoom(Room room){
+        rooms.add(room);
+        room.getUsers().add(this);
+    } 
+    
+    public void removeRoom(Room room){
+        rooms.remove(room);
+        room.getUsers().remove(this);
+    } 
     
     @Override
     public int hashCode() {
