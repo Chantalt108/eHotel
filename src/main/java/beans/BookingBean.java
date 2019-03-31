@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.Resource;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Named;
@@ -24,7 +25,7 @@ import persistence.Booking;
  */
 @Named(value = "BookingBean")
 @ManagedBean(name="BookingBean")
-@ViewScoped
+@RequestScoped
 public class BookingBean implements Serializable{
     private int booking_id;
     private int room_id;

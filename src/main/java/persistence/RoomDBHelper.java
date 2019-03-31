@@ -7,6 +7,7 @@
 package persistence;
 
 import beans.SearchRooms;
+import beans.ViewAllRoomsBean;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -22,6 +23,12 @@ public class RoomDBHelper {
         return r;
     }
     
+    public static List<Room> findAllRooms(EntityManager em, ViewAllRoomsBean viewAllRoomsBean){
+        String queryString = "SELECT r FROM Room r";
+        Query allQuery = em.createQuery(queryString);
+        return performQuery(allQuery);
+        
+    }
     
     public static List<Room> findRoomsWithCriteria(EntityManager em, SearchRooms searchRoom){       
         String initQueryString = "SELECT r FROM Room r";
@@ -105,8 +112,8 @@ public class RoomDBHelper {
         return performQuery(query);
     }
 
-    public static List<Room> getEmployeeRooms(EntityManager em, String userId){
-        String queryString = "SELECT r FROM Room r WHERE r.employeeId = '" + userId +"'";
+    public static List<Room> getAllRooms(EntityManager em, String userId){
+        String queryString = "SELECT r FROM Room r";
         Query ownerQuery = em.createQuery(queryString);
         return performQuery(ownerQuery);
     }
