@@ -80,6 +80,14 @@ public class MenuView {
         itemSearchRooms.setOutcome("searchRooms");
         firstSubmenu.addElement(itemSearchRooms);
         
+        DefaultMenuItem itemAddBooking = new DefaultMenuItem("Add Booking");
+        itemAddBooking.setOutcome("addBooking");
+        firstSubmenu.addElement(itemAddBooking);
+        
+        DefaultMenuItem itemSearchBookings = new DefaultMenuItem("Search Bookings");
+        itemSearchBookings.setOutcome("searchBookings");
+        firstSubmenu.addElement(itemSearchBookings);
+        
         model.addElement(firstSubmenu);
         
         DefaultSubMenu secondSubmenu = new DefaultSubMenu(user.getName() + " - " + user.getUserType());

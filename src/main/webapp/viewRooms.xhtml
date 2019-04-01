@@ -13,12 +13,20 @@
         <ui:define name="content">
             <h:form>
                 <h:panelGrid columns="2" >
-                    <h:outputText value="The room id field of the room you would like to book: " escape="false"/>
+                    <h:outputText value="The booking id: " escape="false"/>
+                    <h:inputText value="#{BookingBean.booking_Id}" />
+                </h:panelGrid>
+                <h:panelGrid columns="2" >
+                    <h:outputText value="The room id: " escape="false"/>
                     <h:inputText value="#{BookingBean.room_Id}" />
                 </h:panelGrid>
                 <h:panelGrid columns="2" >
                     <h:outputText value="The customer id: " escape="false"/>
                     <h:inputText value="#{BookingBean.cust_Id}" />
+                </h:panelGrid>
+                <h:panelGrid columns="2" >
+                    <h:outputText value="The employee id: " escape="false"/>
+                    <h:inputText value="#{BookingBean.emp_Id}" />
                 </h:panelGrid>
                 <div class="column">  
                     <p:outputLabel value="Checkin Date:"/>

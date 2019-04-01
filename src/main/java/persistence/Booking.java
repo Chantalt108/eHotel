@@ -42,29 +42,27 @@ public class Booking implements Serializable{
     /**
      * @param aSerialVersionUID the serialVersionUID to set
      */
-    public static void setSerialVersionUID(long aSerialVersionUID) {
+    public static void setSerialVersionUID(int aSerialVersionUID) {
         serialVersionUID = aSerialVersionUID;
     }
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long booking_id;
+    private int booking_id;
     @Temporal(javax.persistence.TemporalType.DATE)
-    @NotNull
     private Date checkin_date;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date checkout_date;
-    @NotNull
     private Boolean is_renting;
     private int room_id;
     private int cust_id;
     private int emp_id;
     
-    public Booking(long booking_id, Date checkin_date, Date checkout_date, Boolean is_renting, int room_id, int cust_id, int emp_id){
+    public Booking(int booking_id, Date checkin_date, Date checkout_date, Boolean is_renting, int room_id, int cust_id, int emp_id){
         this.booking_id = booking_id;
         this.checkin_date = checkin_date;
         this.checkout_date = checkout_date;
-        this.is_renting = is_renting;
+        this.is_renting = false;
         this.room_id = room_id;
         this.cust_id = cust_id;
         this.emp_id = emp_id;
@@ -72,14 +70,14 @@ public class Booking implements Serializable{
     /**
      * @return the booking_id
      */
-    public long getBooking_Id(){
+    public int getBooking_Id(){
         return booking_id;
     }
     
     /**
      * @param booking_id the booking_id to set
      */
-    public void setBooking_Id(long booking_id){
+    public void setBooking_Id(int booking_id){
         this.booking_id = booking_id;
     }
     

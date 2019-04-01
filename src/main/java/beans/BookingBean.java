@@ -16,12 +16,15 @@ import javax.annotation.Resource;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.servlet.http.HttpSession;
 import persistence.Booking;
 import persistence.BookingDBHelper;
+import persistence.UserAccount;
 
 /**
  *
@@ -29,9 +32,9 @@ import persistence.BookingDBHelper;
  */
 @Named(value = "BookingBean")
 @ManagedBean(name="BookingBean")
-@RequestScoped
+@ViewScoped
 public class BookingBean implements Serializable{
-    private long booking_id;
+    private int booking_id;
     private int room_id;
     private int cust_id;
     private int emp_id;
@@ -51,20 +54,20 @@ public class BookingBean implements Serializable{
     private Map<String,String> types;
     
     public BookingBean(){
-        //this.emp_id = 
+        this.is_renting = false;
     }
     
     /**
      * @return the booking_id
      */
-    public long getBooking_Id(){
+    public int getBooking_Id(){
         return booking_id;
     }
     
     /**
      * @param booking_id the booking_id to set
      */
-    public void setBooking_Id(long booking_id){
+    public void setBooking_Id(int booking_id){
         this.booking_id = booking_id;
     }
     
