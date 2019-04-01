@@ -53,14 +53,6 @@ public class UserAccount implements Serializable {
     @Lob
     private byte[] salt; // the salt used for this account
     
-    @ManyToMany(cascade = { 
-        CascadeType.PERSIST, 
-        CascadeType.MERGE
-    })
-    @JoinTable(name = "UserAccount_Property",
-        joinColumns = @JoinColumn(name = "userId"),
-        inverseJoinColumns = @JoinColumn(name = "propertyId")
-    )
     private Set<Room> rooms = new HashSet<>();
     
     public void addRoom(Room room){

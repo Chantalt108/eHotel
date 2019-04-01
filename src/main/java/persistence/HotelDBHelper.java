@@ -90,7 +90,7 @@ public class HotelDBHelper {
             }
                         
         }else{
-            //Select all Properties
+            //Select all Rooms
             query = em.createQuery("SELECT h FROM Room h");
         }
         return performQuery(query);

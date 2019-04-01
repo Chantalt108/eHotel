@@ -23,7 +23,7 @@
                             <div class="column">  
                             <p:outputLabel value="Booking ID"/>
                             <p:inputText id="booking_id"
-                                         value="#{BookingBean.booking_Id}">
+                                         value="#{BookingBean.booking_Id}" required = "true">
                             </p:inputText>
                             </div>
                             
@@ -35,7 +35,8 @@
                                         yearRange = "c-120:c"
                                         navigator="true"
                                         showButtonPanel="true"
-                                        title="Pick the date you will be staying from the calendar">
+                                        title="Pick the date you will be staying from the calendar"
+                                        required = "true">
                             </p:calendar>
                             </div>
                             
@@ -54,21 +55,21 @@
                             <div class="column">  
                             <p:outputLabel value="Room ID"/>
                             <p:inputText id="room_id"
-                                         value="#{BookingBean.room_Id}">
+                                         value="#{BookingBean.room_Id}" required = "true">
                             </p:inputText>
                             </div>
                             
                             <div class="column">  
                             <p:outputLabel value="Customer ID"/>
                             <p:inputText id="cust_id"
-                                         value="#{BookingBean.cust_Id}">
+                                         value="#{BookingBean.cust_Id}" required = "true">
                             </p:inputText>
                             </div>
                             
                             <div class="column">  
                             <p:outputLabel value="Employee ID"/>
                             <p:inputText id="emp_id"
-                                         value="#{BookingBean.emp_Id}">
+                                         value="#{BookingBean.emp_Id}" required = "true">
                             </p:inputText>
                             </div>
                             

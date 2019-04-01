@@ -51,7 +51,7 @@ public class BookingBean implements Serializable{
     private Map<String,String> types;
     
     public BookingBean(){
-        
+        //this.emp_id = 
     }
     
     /**
@@ -158,36 +158,36 @@ public class BookingBean implements Serializable{
      */
     public String doAddBooking() {
               
-        try{
-            BookingDBHelper.addToBooking(utx, em, Integer.toString(this.room_id));
-            setAddedSuccessfully((Boolean) true);
-            setAddedUnsuccessfully((Boolean) false);
-        }catch(RuntimeException e){
-            setAddedSuccessfully((Boolean) false);
-            setAddedUnsuccessfully((Boolean) true);
-            e.printStackTrace();
-        }
-        return(null);
-        
-        
-        
-//        Booking booking = new Booking(booking_id, checkin_date, checkout_date, is_renting, room_id, cust_id, emp_id);
-//        
-//        try {
-//           
-//           persist(booking); 
-//           String msg = "Booking Created Successfully";
-//           FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, msg, msg));
-//           FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
-//       
-//           return (msg);
-//        } catch(RuntimeException e) {
-//           String msg = "Error While Creating Room";
-//           FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, msg, msg));
-//           FacesContext.getCurrentInstance().getExternalContext()
-//                .getFlash().setKeepMessages(true);
+//        try{
+//            BookingDBHelper.addToBooking(utx, em, room_id);
+//            setAddedSuccessfully((Boolean) true);
+//            setAddedUnsuccessfully((Boolean) false);
+//        }catch(RuntimeException e){
+//            setAddedSuccessfully((Boolean) false);
+//            setAddedUnsuccessfully((Boolean) true);
+//            e.printStackTrace();
 //        }
-//        return null;
+//        return(null);
+        
+        
+        
+        Booking booking = new Booking(booking_id, checkin_date, checkout_date, is_renting, room_id, cust_id, emp_id);
+        
+        try {
+           
+           persist(booking); 
+           String msg = "Booking Created Successfully";
+           FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, msg, msg));
+           FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+       
+           return (msg);
+        } catch(RuntimeException e) {
+           String msg = "Error While Creating Booking";
+           FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, msg, msg));
+           FacesContext.getCurrentInstance().getExternalContext()
+                .getFlash().setKeepMessages(true);
+        }
+        return null;
     }
     
     /**

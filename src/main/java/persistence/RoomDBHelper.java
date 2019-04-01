@@ -18,7 +18,7 @@ import javax.persistence.Query;
  * @author chant
  */
 public class RoomDBHelper {
-    public static Room findRoom(EntityManager em,String id) {
+    public static Room findRoom(EntityManager em, int id) {
         Room r = em.find(Room.class, id);
         return r;
     }
@@ -106,7 +106,7 @@ public class RoomDBHelper {
 //            }
             
         }else{
-            //Select all Properties
+            //Select all Rooms
             query = em.createQuery("SELECT r FROM Room r");
         }
         return performQuery(query);

@@ -8,11 +8,17 @@ package persistence;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
+import javax.persistence.SecondaryTable;
+import javax.persistence.SecondaryTables;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -44,9 +50,11 @@ public class Booking implements Serializable{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long booking_id;
     @Temporal(javax.persistence.TemporalType.DATE)
+    @NotNull
     private Date checkin_date;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date checkout_date;
+    @NotNull
     private Boolean is_renting;
     private int room_id;
     private int cust_id;

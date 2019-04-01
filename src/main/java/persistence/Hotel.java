@@ -6,10 +6,14 @@
 package persistence;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import static javax.persistence.FetchType.LAZY;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -42,8 +46,7 @@ public class Hotel implements Serializable {
     private int num_rooms;
     private String address;
     private String email;
-    private String phone;  
-    
+    private String phone; 
     public Hotel() {
         
     }
@@ -61,7 +64,7 @@ public class Hotel implements Serializable {
     
     @Override
     public String toString() {
-        return "model.Property[ room_id=" + hotel_id + " ]";
+        return "model.Room[ room_id=" + hotel_id + " ]";
     }
 
     /**

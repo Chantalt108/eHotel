@@ -25,7 +25,7 @@ public class BookingDBHelper {
         return h;
     }
     
-    public static void addToBooking(UserTransaction utx, EntityManager em, String roomId){
+    public static void addToBooking(UserTransaction utx, EntityManager em, int roomId){
         HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
         UserAccount user = (UserAccount) session.getAttribute("User");
         user.addRoom(RoomDBHelper.findRoom(em, roomId));
