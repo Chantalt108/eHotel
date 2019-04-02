@@ -40,6 +40,7 @@ public class HotelBean implements Serializable {
     private String address;
     private String email;
     private String phone;
+    private int area;
     //private int hotel_id;
     @PersistenceContext(unitName = "CSI2132_eHotel_war_1.0-SNAPSHOTPU")
     private EntityManager em;
@@ -155,6 +156,19 @@ public class HotelBean implements Serializable {
         this.phone = phone;
     }
 
+    /**
+     * @return the area
+     */
+    public int getArea(){
+        return area;
+    }
+    
+    /**
+     * @param area the area to set
+     */
+    public void setArea(int area){
+        this.area = area;
+    }
      
     
     /**
@@ -164,7 +178,7 @@ public class HotelBean implements Serializable {
      */
     public String doAddHotel() {
                      
-        Hotel hotel = new Hotel(hotel_id, chain_id, rating, num_rooms, address, email, phone);
+        Hotel hotel = new Hotel(hotel_id, chain_id, rating, num_rooms, address, email, phone, area);
         
         try {
             

@@ -41,6 +41,7 @@ public class BookingBean implements Serializable{
     private Date checkin_date;
     private Date checkout_date;
     private Boolean is_renting;
+    private Boolean paid;
     private Boolean addedSuccessfully;
     private Boolean addedUnsuccessfully;
     
@@ -156,6 +157,20 @@ public class BookingBean implements Serializable{
     }
     
     /**
+     * @return the paid
+     */
+    public Boolean getPaid() {
+        return paid;
+    }
+
+    /**
+     * @param paid the paid to set
+     */
+    public void setPaid(Boolean paid) {
+        this.paid = paid;
+    }
+    
+    /**
      * Add the user to the database
      * @return 
      */
@@ -174,7 +189,7 @@ public class BookingBean implements Serializable{
         
         
         
-        Booking booking = new Booking(booking_id, checkin_date, checkout_date, is_renting, room_id, cust_id, emp_id);
+        Booking booking = new Booking(booking_id, checkin_date, checkout_date, is_renting, room_id, cust_id, emp_id, paid);
         
         try {
            

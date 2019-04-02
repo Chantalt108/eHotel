@@ -7,7 +7,7 @@
 package persistence;
 
 import beans.SearchRooms;
-import beans.ViewAllRoomsBean;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -20,10 +20,26 @@ import javax.persistence.Query;
 public class RoomDBHelper {
     public static Room findRoom(EntityManager em, int id) {
         Room r = em.find(Room.class, id);
-        return r;
+        return r;       
     }
     
-    public static List<Room> findAllRooms(EntityManager em, ViewAllRoomsBean viewAllRoomsBean){
+    public static Hotel findHotel(EntityManager em, int id) {
+        Hotel h = em.find(Hotel.class, id);
+        return h;       
+    }
+    
+    public static HotelChain findHotelChain(EntityManager em, int id) {
+        HotelChain c = em.find(HotelChain.class, id);
+        return c;       
+    }
+    
+    public static List<Room> findAllRooms(EntityManager em, SearchRooms searchRoom){
+//        Class.forName("org.postgresql.Driver");
+//        Connection db = DriverManager.getConnection("jdbc:postgresql://web0.site.uottawa.ca:15432/ctseu025", "ctseu025", "Dd77nvwy96h!");
+//        System.out.println(db.isValid(10000));
+//			Statement st = db.createStatement();
+//			ResultSet rs = st.executeQuery("SELECT * FROM ROOMS");//" WHERE " + cond + " = '" + value + "';");
+//                        return rs;
         String queryString = "SELECT r FROM Room r";
         Query allQuery = em.createQuery(queryString);
         return performQuery(allQuery);
@@ -38,27 +54,43 @@ public class RoomDBHelper {
         //Set conditions for the WHERE clause of the Query
         
         
-        if(!(0 == searchRoom.getROOM_ID())){ //If the room_id field was used by the User
-            whereClauseConditions += " r.ROOM_ID = :roomNum";
-        }
-        if(!(0 == searchRoom.getHOTEL_ID())){
-            if(!"".equals(whereClauseConditions)){whereClauseConditions += " AND";} //If a Condition has been added already
-            whereClauseConditions += " r.HOTEL_ID = :hotelNum";
-        }
+//        if(!(0 == searchRoom.getROOM_ID())){ //If the room_id field was used by the User
+//            whereClauseConditions += " r.ROOM_ID = :roomNum";
+//        }
+//        if(!(0 == searchRoom.getHOTEL_ID())){
+//            if(!"".equals(whereClauseConditions)){whereClauseConditions += " AND";} //If a Condition has been added already
+//            whereClauseConditions += " r.HOTEL_ID = :hotelNum";
+//        }
         if(!(searchRoom.getPRICE() == 0)){
             if(!"".equals(whereClauseConditions)){whereClauseConditions += " AND";} //If a Condition has been added already
-            whereClauseConditions += " r.PRICE = :rPrice";
+            whereClauseConditions += " r.PRICE = :rPRICE";
         }
-        if(!("".equals(searchRoom.getAMENITIES()))){
-            if(!"".equals(whereClauseConditions)){whereClauseConditions += " AND";} //If a Condition has been added already
-            whereClauseConditions += " r.AMENITIES = :rAmenities";
-        }
+//        if(!("".equals(searchRoom.getAMENITIES()))){
+//            if(!"".equals(whereClauseConditions)){whereClauseConditions += " AND";} //If a Condition has been added already
+//            whereClauseConditions += " r.AMENITIES = :rAmenities";
+//        }
         
         //To be implemented later time permitting
-//        if(!(searchRoom.getCAPACITY() == 0)){
-//            if(!"".equals(whereClauseConditions)){whereClauseConditions += " AND";} //If a Condition has been added already
-//            whereClauseConditions += " r.CAPACITY = rCapacity";
-//        }
+        if(!(searchRoom.getCAPACITY() == 0)){
+            if(!"".equals(whereClauseConditions)){whereClauseConditions += " AND";} //If a Condition has been added already
+            whereClauseConditions += " r.CAPACITY = :rCAPACITY";
+        }
+        if(!(searchRoom.getAREA() == 0)){
+            if(!"".equals(whereClauseConditions)){whereClauseConditions += " AND";} //If a Condition has been added already
+            whereClauseConditions += " r.AREA = :rAREA";
+        }
+        if(!(searchRoom.getHOTELCHAIN() == 0)){
+            if(!"".equals(whereClauseConditions)){whereClauseConditions += " AND";} //If a Condition has been added already
+            whereClauseConditions += " r.HOTELCHAIN = :rHOTELCHAIN";
+        }
+        if(!(searchRoom.getRATING() == 0)){
+            if(!"".equals(whereClauseConditions)){whereClauseConditions += " AND";} //If a Condition has been added already
+            whereClauseConditions += " r.RATING = :rRATING";
+        }
+        if(!(searchRoom.getNUM_ROOMS() == 0)){
+            if(!"".equals(whereClauseConditions)){whereClauseConditions += " AND";} //If a Condition has been added already
+            whereClauseConditions += " r.NUM_ROOMS = :rNUM_ROOMS";
+        }
 //        if(!("".equals(searchRoom.getOUTSIDE_VIEW()))){
 //            if(!"".equals(whereClauseConditions)){whereClauseConditions += " AND";} //If a Condition has been added already
 //            whereClauseConditions += " r.OUTSIDE_VIEW = rOutside_View";
@@ -71,6 +103,7 @@ public class RoomDBHelper {
 //            if(!"".equals(whereClauseConditions)){whereClauseConditions += " AND";} //If a Condition has been added already
 //            whereClauseConditions += " r.PROBLEMS = rProblems";
 //        }
+
         
         
         //If there are conditions add the WHERE clause and its conditions 
@@ -80,21 +113,33 @@ public class RoomDBHelper {
             query = em.createQuery(initQueryString);
         
             //Set Parameters of the Query
-            if(!(0 == searchRoom.getROOM_ID())){
-                query.setParameter("roomNum", searchRoom.getROOM_ID());
-            }
-            if(!(0 == searchRoom.getHOTEL_ID())){
-                query.setParameter("hotelNum", searchRoom.getHOTEL_ID());
-            }
-            if(!(searchRoom.getPRICE() == 0)){
-                query.setParameter("rPrice", searchRoom.getPRICE());
-            }
-            if(!("".equals(searchRoom.getAMENITIES()))){
-                query.setParameter("rAmenities", searchRoom.getAMENITIES());
-            }
-//            if(!(0 == searchRoom.getCAPACITY())){
-//                query.setParameter("rCapacity", searchRoom.getCAPACITY());
+//            if(!(0 == searchRoom.getROOM_ID())){
+//                query.setParameter("roomNum", searchRoom.getROOM_ID());
 //            }
+//            if(!(0 == searchRoom.getHOTEL_ID())){
+//                query.setParameter("hotelNum", searchRoom.getHOTEL_ID());
+//            }
+            if(!(searchRoom.getPRICE() == 0)){
+                query.setParameter("rPRICE", searchRoom.getPRICE());
+            }
+//            if(!("".equals(searchRoom.getAMENITIES()))){
+//                query.setParameter("rAmenities", searchRoom.getAMENITIES());
+//            }
+            if(!(0 == searchRoom.getCAPACITY())){
+                query.setParameter("rCAPACITY", searchRoom.getCAPACITY());
+            }
+            if(!(0 == searchRoom.getAREA())){
+                query.setParameter("rAREA", searchRoom.getAREA());
+            }
+            if(!(0 == searchRoom.getHOTELCHAIN())){
+                query.setParameter("rHOTELCHAIN", searchRoom.getHOTELCHAIN());
+            }
+            if(!(0 == searchRoom.getRATING())){
+                query.setParameter("rRATING", searchRoom.getRATING());
+            }
+            if(!(0 == searchRoom.getNUM_ROOMS())){
+                query.setParameter("rNUM_ROOMS", searchRoom.getNUM_ROOMS());
+            }
 //            if(!("".equals(searchRoom.getOUTSIDE_VIEW()))){
 //                query.setParameter("rOutside_View", searchRoom.getOUTSIDE_VIEW());
 //            }

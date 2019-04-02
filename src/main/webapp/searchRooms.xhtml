@@ -14,18 +14,17 @@
             <h:outputText value="Search Rooms" escape="false"/>
             <hr></hr>
             <h:panelGrid columns="2" >
-                <h:outputText value="Room ID" escape="false"/>
-                <h:inputText value="#{searchRooms.ROOM_ID}" />
-                <h:outputText value="Hotel ID" escape="false"/>
+                <h:outputText value="Capacity: " escape="false"/>
+                <h:inputText value="#{searchRooms.CAPACITY}" />
+                <h:outputText value="Hotel ID: " escape="false"/>
                 <h:inputText value="#{searchRooms.HOTEL_ID}" />
-                <h:outputText value="Price" escape="false"/>
+                <h:outputText value="Price: " escape="false"/>
                 <h:inputText value="#{searchRooms.PRICE}" />
-                <h:outputText value="Amenities" escape="false"/>
-                <h:inputText value="#{searchRooms.AMENITIES}" />
 
             </h:panelGrid>
             
             <h:commandButton value="Search" action="#{searchRooms.search}"></h:commandButton>
+            <h:commandButton value="Display all rooms" action="#{searchRooms.displayAllRooms}"></h:commandButton>
         </h:form>
         <h:outputText rendered="#{searchRooms.noCriteria}" style="color:red" id="noResultsMessage" value="At least one criteria must be filled"/>
         </ui:define>

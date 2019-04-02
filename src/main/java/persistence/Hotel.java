@@ -46,13 +46,14 @@ public class Hotel implements Serializable {
     private int num_rooms;
     private String address;
     private String email;
-    private String phone; 
+    private String phone;
+    private int area;
     public Hotel() {
         
     }
     
     public Hotel(int hotel_id, int chain_id, int rating, 
-            int num_rooms, String address, String email, String phone) {
+            int num_rooms, String address, String email, String phone, int area) {
         this.hotel_id = hotel_id;
         this.chain_id = chain_id;
         this.rating = rating;
@@ -60,11 +61,12 @@ public class Hotel implements Serializable {
         this.address = address;
         this.email = email;
         this.phone = phone;
+        this.area = area;
         }
     
     @Override
     public String toString() {
-        return "model.Room[ room_id=" + hotel_id + " ]";
+        return "model.Hotel[ hotel_id=" + hotel_id + " ]";
     }
 
     /**
@@ -165,7 +167,19 @@ public class Hotel implements Serializable {
         this.phone = phone;
     }
 
-
+    /**
+     * @return the area
+     */
+    public int getArea(){
+        return area;
+    }
+    
+    /**
+     * @param area the area to set
+     */
+    public void setArea(int area){
+        this.area = area;
+    }
   
     
 }

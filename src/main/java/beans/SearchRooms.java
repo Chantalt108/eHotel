@@ -6,6 +6,7 @@
 package beans;
 
 import persistence.Room;
+import persistence.Hotel;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
@@ -36,6 +37,10 @@ public class SearchRooms implements Serializable {
     private String OUTSIDE_VIEW;
     private Boolean EXTENDABLE;
     private String PROBLEMS;
+    private int AREA;
+    private int HOTELCHAIN;
+    private int RATING;
+    private int NUM_ROOMS;
     private Boolean foundNoResults;
     private Boolean noCriteria;
     
@@ -48,12 +53,33 @@ public class SearchRooms implements Serializable {
     }
     
     public String search() {
-       if(0 == getROOM_ID() && 0 == getHOTEL_ID() && getPRICE() == 0 && null == getAMENITIES() && 0 == getCAPACITY() && null == getOUTSIDE_VIEW() && false == getEXTENDABLE() && null == getPROBLEMS()){
+       if(0 == getROOM_ID() 
+               && 0 == getHOTEL_ID() 
+               && getPRICE() == 0 
+               && null == getAMENITIES() 
+               && 0 == getCAPACITY() 
+               && null == getOUTSIDE_VIEW() 
+               && false == getEXTENDABLE() 
+               && null == getPROBLEMS()
+               && 0 == getAREA()
+               && 0 == getHOTELCHAIN()
+               && 0 == getRATING()
+               && 0 == getNUM_ROOMS()
+               ){
             setNoCriteria(true);
             return(null);
        }
        
        List<Room> results = RoomDBHelper.findRoomsWithCriteria(em, this);
+       setLookupResults(results);
+       if(results == null || results.isEmpty()){setFoundNoResults((Boolean) true);}
+        setNoCriteria(false);
+       return("viewRooms");
+    }
+    
+    public String displayAllRooms() {
+             
+       List<Room> results = RoomDBHelper.findAllRooms(em, this);
        setLookupResults(results);
        if(results == null || results.isEmpty()){setFoundNoResults((Boolean) true);}
         setNoCriteria(false);
@@ -197,6 +223,61 @@ public class SearchRooms implements Serializable {
         this.PROBLEMS = PROBLEMS;
     }
 
+    /**
+   * @return the AREA
+   */
+    public int getAREA() {
+        return AREA;
+    }
+
+    /**
+     * @param AREA the AREA to set
+     */
+    public void setAREA(int AREA) {
+        this.AREA = AREA;
+    }
+    
+    /**
+   * @return the HOTELCHAIN
+   */
+    public int getHOTELCHAIN() {
+        return HOTELCHAIN;
+    }
+
+    /**
+     * @param HOTELCHAIN the HOTELCHAIN to set
+     */
+    public void setHOTELCHAIN(int HOTELCHAIN) {
+        this.HOTELCHAIN = HOTELCHAIN;
+    }
+    
+    /**
+   * @return the RATING
+   */
+    public int getRATING() {
+        return RATING;
+    }
+
+    /**
+     * @param RATING the RATING to set
+     */
+    public void setRATING(int RATING) {
+        this.RATING = RATING;
+    }
+    
+    /**
+   * @return the NUM_ROOMS
+   */
+    public int getNUM_ROOMS() {
+        return NUM_ROOMS;
+    }
+
+    /**
+     * @param NUM_ROOMS the NUM_ROOMS to set
+     */
+    public void setNUM_ROOMS(int NUM_ROOMS) {
+        this.NUM_ROOMS = NUM_ROOMS;
+    }
 
     /**
      * @return the noCriteria

@@ -4,11 +4,12 @@ import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-04-01T13:46:18")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-04-02T12:05:17")
 @StaticMetamodel(Hotel.class)
 public class Hotel_ { 
 
     public static volatile SingularAttribute<Hotel, Integer> num_rooms;
+    public static volatile SingularAttribute<Hotel, Integer> area;
     public static volatile SingularAttribute<Hotel, String> address;
     public static volatile SingularAttribute<Hotel, Integer> chain_id;
     public static volatile SingularAttribute<Hotel, String> phone;
