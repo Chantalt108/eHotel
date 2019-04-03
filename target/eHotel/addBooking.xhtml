@@ -73,15 +73,16 @@
                             </p:inputText>
                             </div>
                             
-                            
+                            <div class="column">  
+                            <p:outputLabel value="Customer has paid: "/>
+                            <p:inputText id="paid"
+                                         value="#{BookingBean.paid}" required = "true">
+                            </p:inputText>
+                            </div>
                                                         
                         </h:panelGrid>
-                    </p:panel>
-              
-                                     
-                        <p:commandButton id="submitBtn"  ajax="false" action="#{BookingBean.doAddBooking}" value="Add Room"/>
-                   
-                   
+                    </p:panel>           
+                    <p:commandButton id="submitBtn"  ajax="false" action="#{BookingBean.doAddBooking}" value="Add Room"/>    
            </p:panel>   
         </h:form>
         <p:blockUI block="form1"  widgetVar="bui">

@@ -2,13 +2,24 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Search Bookings</title>
     </h:head>
     <h:body>
+        
         <ui:composition template="./template.xhtml">
         <ui:define name="content">
+        <h:form>
+        <h:panelGrid columns="2" >
+            <h:outputText value="Choose the booking ID to turn into renting: " escape="false"/>
+            <h:inputText value="#{editBookings.booking_Id}" />
+        </h:panelGrid>
+        
+            <p:commandButton id="editbtn"  ajax="false" action="#{editBookings.doEditBooking}" value="Set booking to renting"/>
+        </h:form>
+            <br/><br/>
         <h:form>
             <h:outputText value="Search Bookings" escape="false"/>
             <hr></hr>
@@ -23,6 +34,29 @@
                 <h:inputText value="#{searchBookings.emp_Id}" />
                 <h:outputText value="Is currently being rented?" escape="false"/>
                 <h:inputText value="#{searchBookings.is_Renting}" />
+
+                <p:outputLabel value="Checkin Date:"/>
+                <p:calendar id="checkin_date"
+                            value="#{searchBookings.checkin_Date}"
+                            label="checkin_date"
+                            yearRange = "c-120:c"
+                            navigator="true"
+                            showButtonPanel="true"
+                            title="Pick the date you will be staying from the calendar"
+                            required = "false">
+                </p:calendar>
+
+                <p:outputLabel value="Checkout Date:"/>
+                <p:calendar id="checkout_date"
+                            value="#{searchBookings.checkout_Date}"
+                            label="checkout_date"
+                            yearRange = "c-120:c"
+                            navigator="true"
+                            showButtonPanel="true"
+                            title="Pick the date you will be leaving from the calendar"
+                            required = "false">
+                </p:calendar>
+
             </h:panelGrid>
             
             <h:commandButton value="Search" action="#{searchBookings.search}"></h:commandButton>

@@ -7,7 +7,6 @@
 package persistence;
 
 import beans.SearchRooms;
-import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;

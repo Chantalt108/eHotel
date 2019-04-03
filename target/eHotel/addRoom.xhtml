@@ -57,14 +57,18 @@
                             </div>
                             
                             <div class="row">
-                            <p:outputLabel value="Extendable: "/>
-                            <selectOneMenu id="extendable"
-                                          value="#{RoomBean.EXTENDABLE}" required = "true" label = "extendable" requiredMessage="An answer is required">
-                            <f:selectItem itemLabel="No" itemValue="0" noSelectionOption="false" />
-                            <f:selectItem itemLabel="Yes" itemValue="1" noSelectionOption="false" />
-                            </selectOneMenu>
+                            <p:outputLabel value="Extendable: "/>                                                      
+                            <p:selectOneMenu id="extendable" value="#{RoomBean.EXTENDABLE}" required="true" label="extendable" requiredMessage="An answer is required">
+                                <f:selectItem itemLabel="" itemValue="" noSelectionOption="false" />
+                                <f:selectItem itemLabel="Yes" itemValue="Yes" noSelectionOption="false" />
+                                <f:selectItem itemLabel="No" itemValue="No" noSelectionOption="false" />
+                                <f:selectItems value="#{RoomBean.EXTENDABLE}" />
+                                <p:ajax event="keyup" update="extendableMsg"/>
+                            </p:selectOneMenu>
+                            <p:message  id="extendableMsg" for="extendable"/>
                             </div>
                             
+                            <div>
                             <p:outputLabel value="Outside View:*"/>                                                      
                             <p:selectOneMenu id="outside_view" value="#{RoomBean.OUTSIDE_VIEW}" required="true" label="outside_view" requiredMessage="An answer is required">
                                 <f:selectItem itemLabel="" itemValue="" noSelectionOption="false" />
@@ -74,7 +78,8 @@
                                 <p:ajax event="keyup" update="outside_ViewMsg"/>
                             </p:selectOneMenu>
                             <p:message  id="outside_ViewMsg" for="outside_view"/>
-                                                        
+                            </div>
+                            
                             <div class="row">
                             <p:outputLabel value="Problems"/>
                             <p:inputText id="problems"

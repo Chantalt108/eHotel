@@ -50,7 +50,7 @@ public class MenuView {
         DefaultSubMenu secondSubmenu = new DefaultSubMenu("");
  
         DefaultMenuItem itemAddAccount = new DefaultMenuItem("Add Account");
-        itemAddAccount.setOutcome("signIn");
+        itemAddAccount.setOutcome("selectUserCreateAcc");
         secondSubmenu.addElement(itemAddAccount);
         
         DefaultMenuItem itemLogin = new DefaultMenuItem("Login");

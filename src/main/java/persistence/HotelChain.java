@@ -21,7 +21,7 @@ import javax.persistence.Table;
  * @author chant
  */
 @Entity
-@Table(name="HotelChain")
+@Table(name="HotelChains")
 public class HotelChain implements Serializable {
     private static long serialVersionUID = 1L;
 
