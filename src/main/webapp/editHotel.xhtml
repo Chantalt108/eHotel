@@ -18,25 +18,10 @@
         </h:panelGrid>
         
             <br/><br/>
-            <p:commandButton id="delbtn"  ajax="false" action="#{editHotels.doDeleteBooking}" value="Delete"/>
+            <p:commandButton id="delbtn"  ajax="false" action="#{editHotels.doDeleteHotel}" value="Delete"/>
         </h:form>
             <br/><br/>
-        <h:form>
-            <h:outputText value="Search Hotels" escape="false"/>
-            <hr></hr>
-            <h:panelGrid columns="2" >
-                <h:outputText value="Hotel ID " escape="false"/>
-                <h:inputText value="#{searchHotels.hotel_Id}" />
-                <h:outputText value="Chain ID " escape="false"/>
-                <h:inputText value="#{searchHotels.chain_Id}" />
-                <h:outputText value="Rating: " escape="false"/>
-                <h:inputText value="#{searchHotels.rating}" />
-
-            </h:panelGrid>
-            
-            <h:commandButton value="Search" action="#{searchHotels.search}"></h:commandButton>
-        </h:form>
-        <h:outputText rendered="#{searchHotels.noCriteria}" style="color:red" id="noResultsMessage" value="At least one criteria must be filled"/>
+        
         </ui:define>
         </ui:composition>
     </h:body>

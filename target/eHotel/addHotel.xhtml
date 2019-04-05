@@ -3,7 +3,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Add Hotel for Testing</title>
@@ -18,67 +17,63 @@
         <p:growl autoUpdate="true"/>
         <h:form id="form1">
             
-            <p:panel header="Add Hotel" style="margin-bottom:20px">
-                       <p:panel header="Hotel Details" style="margin-bottom:20px">
-                        <h:panelGrid columns="1">
-                            <div class="column">  
-                            <p:outputLabel value="Hotel Number:"/>
-                            <p:inputText id="hotel_id"
-                                         value="#{HotelBean.hotel_Id}">
-                            </p:inputText>
-                            </div>
-                            
-                            <div class="column">  
-                            <p:outputLabel value="Chain Number:"/>
-                            <p:inputText id="chain_id"
-                                         value="#{HotelBean.chain_Id}">
-                            </p:inputText>
-                            </div>
-                            
-                            <div class="column">  
-                            <p:outputLabel value="Rating: "/>
-                            <p:inputText id="rating"
-                                         value="#{HotelBean.rating}">
-                            </p:inputText>
-                            </div>
-                            
-                            <div class="row">
-                            <p:outputLabel value="Number of Rooms: "/>
-                            <p:inputText id="num_rooms"
-                                          value="#{HotelBean.num_Rooms}">
-                            </p:inputText>
-                            </div>
-                            
-                            <div class="row">
-                            <p:outputLabel value="Address: "/>
-                            <p:inputText id="address"
-                                          value="#{HotelBean.address}">
-                            </p:inputText>
-                            </div>
-                            
-                            <div class="row">
-                            <p:outputLabel value="Email"/>
-                            <p:inputText id="email"
-                                          value="#{HotelBean.email}">
-                            </p:inputText>
-                            </div>
-                            
-                            <div class="row">
-                            <p:outputLabel value="phone"/>
-                            <p:inputText id="phone"
-                                          value="#{HotelBean.phone}">
-                            </p:inputText>
-                            </div>
-                            
-                                                        
-                        </h:panelGrid>
-                    </p:panel>
+            <h:outputText value="Add Hotel" escape="false"/>
+            <br/>
+
+                <h:panelGrid columns="1">
+                    <div class="column">  
+                    <p:outputLabel value="Hotel Number:"/>
+                    <p:inputText id="hotel_id"
+                                 value="#{HotelBean.hotel_Id}">
+                    </p:inputText>
+                    </div>
+
+                    <div class="column">  
+                    <p:outputLabel value="Chain Number:"/>
+                    <p:inputText id="chain_id"
+                                 value="#{HotelBean.chain_Id}">
+                    </p:inputText>
+                    </div>
+
+                    <div class="column">  
+                    <p:outputLabel value="Rating: "/>
+                    <p:inputText id="rating"
+                                 value="#{HotelBean.rating}">
+                    </p:inputText>
+                    </div>
+
+                    <div class="row">
+                    <p:outputLabel value="Number of Rooms: "/>
+                    <p:inputText id="num_rooms"
+                                  value="#{HotelBean.num_Rooms}">
+                    </p:inputText>
+                    </div>
+
+                    <div class="row">
+                    <p:outputLabel value="Address: "/>
+                    <p:inputText id="address"
+                                  value="#{HotelBean.address}">
+                    </p:inputText>
+                    </div>
+
+                    <div class="row">
+                    <p:outputLabel value="Email"/>
+                    <p:inputText id="email"
+                                  value="#{HotelBean.email}">
+                    </p:inputText>
+                    </div>
+
+                    <div class="row">
+                    <p:outputLabel value="phone"/>
+                    <p:inputText id="phone"
+                                  value="#{HotelBean.phone}">
+                    </p:inputText>
+                    </div>
+
+
+                </h:panelGrid>
+                <p:commandButton id="submitBtn"  ajax="false" action="#{HotelBean.doAddHotel}" value="Add Hotel"/>
               
-                                     
-                        <p:commandButton id="submitBtn"  ajax="false" action="#{HotelBean.doAddHotel}" value="Add Hotel"/>
-                   
-                   
-           </p:panel>   
         </h:form>
         <p:blockUI block="form1"  widgetVar="bui">
             Processing<br />

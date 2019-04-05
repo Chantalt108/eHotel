@@ -61,7 +61,7 @@ public class EditHotels implements Serializable{
     }
     
     
-    public String doDeleteBooking() {
+    public String doDeleteHotel() {
        if(0 == getHotel_Id() 
                && 0 == getChain_Id()
                && getRating() == 0
@@ -74,10 +74,15 @@ public class EditHotels implements Serializable{
             return(null);
        }
        
-       List<Hotel> results = HotelDBHelper.deleteHotelsWithCriteria(em, this);
-       setLookupResults(results);
-       if(results == null || results.isEmpty()){setFoundNoResults((Boolean) true);}
-        setNoCriteria(false);
+       try{
+            List<Hotel> results = HotelDBHelper.deleteHotelsWithCriteria(em, this);
+            setLookupResults(results);
+            if(results == null || results.isEmpty()){setFoundNoResults((Boolean) true);}
+             setNoCriteria(false);
+       }
+       catch(Exception e){
+           return ("viewHotels");
+       }
        return("viewHotels");
     }
     

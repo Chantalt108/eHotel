@@ -44,7 +44,7 @@ public class MenuView {
         DefaultMenuItem itemIndex = new DefaultMenuItem("Home");
         itemIndex.setOutcome("index");
         firstSubmenu.addElement(itemIndex);
-        
+               
         model.addElement(firstSubmenu);
         
         DefaultSubMenu secondSubmenu = new DefaultSubMenu("");
@@ -141,14 +141,25 @@ public class MenuView {
                 
         model.addElement(firstSubmenu);
         
-        
         DefaultSubMenu secondSubmenu = new DefaultSubMenu();
+        
+        DefaultMenuItem itemView1 = new DefaultMenuItem("View 1 - Hotels in Area");
+        itemView1.setOutcome("view1");
+        secondSubmenu.addElement(itemView1);
+        
+        DefaultMenuItem itemView2 = new DefaultMenuItem("View 2 - Capacity of Rooms");
+        itemView2.setOutcome("view2");
+        secondSubmenu.addElement(itemView2);
+  
+        model.addElement(secondSubmenu);
+        
+        DefaultSubMenu thirdSubmenu = new DefaultSubMenu();
         
         DefaultMenuItem itemLogout = new DefaultMenuItem("Logout");
         itemLogout.setCommand("#{menuView.logout}");
-        secondSubmenu.addElement(itemLogout);
+        thirdSubmenu.addElement(itemLogout);
   
-        model.addElement(secondSubmenu);
+        model.addElement(thirdSubmenu);
    
         }
 

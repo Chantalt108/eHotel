@@ -6,6 +6,8 @@
 
 package persistence;
 
+import beans.EditHotels;
+import beans.EditRooms;
 import beans.SearchRooms;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,13 +34,14 @@ public class RoomDBHelper {
         return c;       
     }
     
+    public static List<Room> deleteRoomsWithCriteria(EntityManager em, EditRooms editRoom){
+        Query query = em.createNativeQuery("DELETE FROM ROOMS "
+                + "WHERE ROOM_ID = " + editRoom.getROOM_ID());
+        
+        return performQuery(query);
+    }
+    
     public static List<Room> findAllRooms(EntityManager em, SearchRooms searchRoom){
-//        Class.forName("org.postgresql.Driver");
-//        Connection db = DriverManager.getConnection("jdbc:postgresql://web0.site.uottawa.ca:15432/ctseu025", "ctseu025", "Dd77nvwy96h!");
-//        System.out.println(db.isValid(10000));
-//			Statement st = db.createStatement();
-//			ResultSet rs = st.executeQuery("SELECT * FROM ROOMS");//" WHERE " + cond + " = '" + value + "';");
-//                        return rs;
         String queryString = "SELECT r FROM Room r";
         Query allQuery = em.createQuery(queryString);
         return performQuery(allQuery);

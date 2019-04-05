@@ -53,7 +53,7 @@ public class Room implements Serializable {
     private String OUTSIDE_VIEW;
     private Boolean EXTENDABLE;
     private String PROBLEMS;
-    @ManyToMany(mappedBy = "rooms")
+    @ManyToMany(mappedBy = "ROOMS")
     private Set<UserAccount> users = new HashSet<>();
     
     public Room() {
