@@ -43,23 +43,23 @@ public class BookingDBHelper {
         }
     }
     
-    public static List<Booking> editBookingsWithCriteria(EntityManager em, EditBookings editBooking){
-        //String initQueryString = "SELECT b FROM Booking b WHERE b.booking_id = :bookingNum";
-        //Query querySet;
-//        Query querySet = em.createQuery("UPDATE PUBLIC.BOOKINGS b SET b.is_renting = :boolTrue WHERE b.is_renting = :boolFalse"); 
-        Query querySet = em.createQuery("UPDATE PUBLIC.BOOKINGS b SET b.is_renting = "
-                + "CASE b.is_renting "
-                + "WHEN FALSE THEN TRUE "
-                + "ELSE FALSE END "
-                + "WHERE b.booking_id in :bookingNum"); 
-                
-        querySet.setParameter("boolTrue", true)
-                .setParameter("boolFalse", false)
-                .setParameter("bookingNum", editBooking.getBooking_Id()).executeUpdate();  
+    public static List<Booking> deleteBookingsWithCriteria(EntityManager em, EditBookings editBooking){
+        Query query = em.createQuery("DELETE FROM Booking b WHERE b.booking_id = :bookingNum");
         
+        int updateCount = query.setParameter("bookingNum", editBooking.getBooking_Id()).executeUpdate();
+        return performQuery(query);
+    }
+    
+    public static List<Booking> editBookingsWithCriteria(EntityManager em, EditBookings editBooking){ 
         
-        //Query queryReturn = em.createQuery("SELECT b FROM Booking b WHERE b.booking_id = :bookingNum");
-        return performQuery(querySet);
+          Query queryset = em.createNativeQuery("UPDATE BOOKINGS "
+                  + "SET is_renting = TRUE "
+                  + "WHERE booking_id = " + editBooking.getBooking_Id());
+        
+          performQuery(queryset);
+          Query queryReturn = em.createQuery("SELECT b FROM Booking b WHERE b.booking_id = :bookingNum");
+        
+        return performQuery(queryReturn);
     }
     
     public static List<Booking> findBookingsWithCriteria(EntityManager em, SearchBookings searchBooking){
@@ -130,7 +130,7 @@ public class BookingDBHelper {
                         
         }else{
             //Select all Rooms
-            query = em.createQuery("SELECT b FROM Room b");
+            query = em.createQuery("SELECT b FROM Booking b");
         }
         return performQuery(query);
     }

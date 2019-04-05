@@ -58,13 +58,16 @@ public class Booking implements Serializable{
     private int cust_id;
     private int emp_id;
     private Boolean paid;
+    private int hotel_id;
     
-    public Booking(int booking_id, Date checkin_date, Date checkout_date, Boolean is_renting, int room_id, int cust_id, int emp_id, Boolean paid){
+    public Booking(int booking_id, Date checkin_date, Date checkout_date, Boolean is_renting, int room_id, int hotel_id, 
+            int cust_id, int emp_id, Boolean paid){
         this.booking_id = booking_id;
         this.checkin_date = checkin_date;
         this.checkout_date = checkout_date;
         this.is_renting = false;
         this.room_id = room_id;
+        this.hotel_id = hotel_id;
         this.cust_id = cust_id;
         this.emp_id = emp_id;
         this.paid = paid;
@@ -180,4 +183,19 @@ public class Booking implements Serializable{
     public void setPaid(Boolean paid) {
         this.paid = paid;
     }
+    
+    /**
+     * @return the hotel_id
+     */
+    public int getHotel_Id() {
+        return hotel_id;
+    }
+
+    /**
+     * @param hotel_id the hotel_id to set
+     */
+    public void setHotel_Id(int hotel_id) {
+        this.hotel_id = hotel_id;
+    }
+    
 }

@@ -20,6 +20,9 @@
                 <h:column>
                     <f:facet name="header">Room ID</f:facet>
                     #{booking.room_Id}
+                </h:column><h:column>
+                    <f:facet name="header">Hotel ID</f:facet>
+                    #{booking.hotel_Id}
                 </h:column>
                 <h:column>
                     <f:facet name="header">Customer ID</f:facet>
@@ -38,7 +41,7 @@
                     #{booking.checkout_Date}
                 </h:column>
                 <h:column>
-                    <f:facet name="header">Is currently being rented: </f:facet>
+                    <f:facet name="header">Currently being rented?: </f:facet>
                     #{booking.is_Renting}
                 </h:column>
                 </h:dataTable>

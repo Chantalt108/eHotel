@@ -8,11 +8,20 @@ package beans;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.HeuristicMixedException;
+import javax.transaction.HeuristicRollbackException;
+import javax.transaction.NotSupportedException;
+import javax.transaction.RollbackException;
+import javax.transaction.SystemException;
+import javax.transaction.UserTransaction;
 import persistence.Booking;
 import persistence.BookingDBHelper;
 
@@ -25,6 +34,8 @@ import persistence.BookingDBHelper;
 public class EditBookings implements Serializable{
     @PersistenceContext(unitName = "CSI2132_eHotel_war_1.0-SNAPSHOTPU")
     EntityManager em;
+    @Inject
+    UserTransaction ut;
     @Resource
     private javax.transaction.UserTransaction utx;
     
@@ -57,8 +68,57 @@ public class EditBookings implements Serializable{
             setNoCriteria(true);
             return(null);
        }
-       
+//        try {
+//            ut.begin();
+//        } catch (NotSupportedException ex) {
+//            Logger.getLogger(EditBookings.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (SystemException ex) {
+//            Logger.getLogger(EditBookings.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        em.joinTransaction();
+//
+//        em.createNamedQuery("UPDATE PUBLIC.BOOKINGS b SET b.is_renting = 1 "
+//                + "WHERE b.booking_id = :bookingNum")
+//                .setParameter("boolTrue", true)
+//                .setParameter("boolFalse", false)
+//                .setParameter("bookingNum", getBooking_Id()).executeUpdate(); 
+//        
+//        try {
+//            ut.commit();
+//        } catch (RollbackException ex) {
+//            Logger.getLogger(EditBookings.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (HeuristicMixedException ex) {
+//            Logger.getLogger(EditBookings.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (HeuristicRollbackException ex) {
+//            Logger.getLogger(EditBookings.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (SecurityException ex) {
+//            Logger.getLogger(EditBookings.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (IllegalStateException ex) {
+//            Logger.getLogger(EditBookings.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (SystemException ex) {
+//            Logger.getLogger(EditBookings.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+
        List<Booking> results = BookingDBHelper.editBookingsWithCriteria(em, this);
+       setLookupResults(results);
+       if(results == null || results.isEmpty()){setFoundNoResults((Boolean) true);}
+        setNoCriteria(false);
+       return("viewBookings");
+    }
+    
+    public String doDeleteBooking() {
+       if(0 == getBooking_Id() 
+               && null == getCheckin_Date()
+               && getCheckout_Date() == null
+               && null == getIs_Renting()
+               && 0 == getRoom_Id()
+               && 0 == getCust_Id()
+               && 0 == getEmp_Id()){
+            setNoCriteria(true);
+            return(null);
+       }
+       
+       List<Booking> results = BookingDBHelper.deleteBookingsWithCriteria(em, this);
        setLookupResults(results);
        if(results == null || results.isEmpty()){setFoundNoResults((Boolean) true);}
         setNoCriteria(false);
