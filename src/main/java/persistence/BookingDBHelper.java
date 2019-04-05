@@ -44,20 +44,20 @@ public class BookingDBHelper {
     }
     
     public static List<Booking> deleteBookingsWithCriteria(EntityManager em, EditBookings editBooking){
-        Query query = em.createQuery("DELETE FROM Booking b WHERE b.booking_id = :bookingNum");
+        Query query = em.createNativeQuery("DELETE FROM BOOKINGS "
+                + "WHERE booking_id = " + editBooking.getBooking_Id());
         
-        int updateCount = query.setParameter("bookingNum", editBooking.getBooking_Id()).executeUpdate();
         return performQuery(query);
     }
     
     public static List<Booking> editBookingsWithCriteria(EntityManager em, EditBookings editBooking){ 
         
-          Query queryset = em.createNativeQuery("UPDATE BOOKINGS "
-                  + "SET is_renting = TRUE "
-                  + "WHERE booking_id = " + editBooking.getBooking_Id());
-        
-          performQuery(queryset);
-          Query queryReturn = em.createQuery("SELECT b FROM Booking b WHERE b.booking_id = :bookingNum");
+        Query queryset = em.createNativeQuery("UPDATE BOOKINGS "
+                + "SET is_renting = TRUE "
+                + "WHERE booking_id = " + editBooking.getBooking_Id());
+
+        performQuery(queryset);
+        Query queryReturn = em.createQuery("SELECT b FROM Booking b WHERE b.booking_id = :bookingNum");
         
         return performQuery(queryReturn);
     }

@@ -62,7 +62,7 @@ public class MenuView {
             
         } else if(user.getUserType().equals(UserType.EMPLOYEE)){
             
-        DefaultSubMenu firstSubmenu = new DefaultSubMenu("eHotel");
+        DefaultSubMenu firstSubmenu = new DefaultSubMenu("eHotel\n" + user.getUserType() + " - " + user.getName());
         
         DefaultMenuItem itemIndex = new DefaultMenuItem("Home");
         itemIndex.setOutcome("index");
@@ -90,7 +90,31 @@ public class MenuView {
         
         model.addElement(firstSubmenu);
         
-        DefaultSubMenu secondSubmenu = new DefaultSubMenu(user.getName() + " - " + user.getUserType());
+        DefaultSubMenu thirdSubmenu = new DefaultSubMenu();
+        
+        DefaultMenuItem itemAddHotel = new DefaultMenuItem("Add Hotel");
+        itemAddHotel.setCommand("addHotel");
+        thirdSubmenu.addElement(itemAddHotel);
+        
+        DefaultMenuItem itemEditHotel = new DefaultMenuItem("Edit Hotel");
+        itemEditHotel.setCommand("editHotel");
+        thirdSubmenu.addElement(itemEditHotel);
+        
+        DefaultMenuItem itemEditRoom = new DefaultMenuItem("Edit Room");
+        itemEditRoom.setCommand("editRoom");
+        thirdSubmenu.addElement(itemEditRoom);
+        
+        DefaultMenuItem itemAddAccount = new DefaultMenuItem("Add Account");
+        itemAddAccount.setOutcome("selectUserCreateAcc");
+        thirdSubmenu.addElement(itemAddAccount);
+        
+        DefaultMenuItem itemEditUsers = new DefaultMenuItem("Edit Users");
+        itemEditUsers.setCommand("editUsers");
+        thirdSubmenu.addElement(itemEditUsers);
+  
+        model.addElement(thirdSubmenu);
+        
+        DefaultSubMenu secondSubmenu = new DefaultSubMenu();
         
         DefaultMenuItem itemLogout = new DefaultMenuItem("Logout");
         itemLogout.setCommand("#{menuView.logout}");
@@ -101,7 +125,7 @@ public class MenuView {
                    
         } else if(user.getUserType().equals(UserType.CUSTOMER)){
             
-        DefaultSubMenu firstSubmenu = new DefaultSubMenu("eHotel");
+        DefaultSubMenu firstSubmenu = new DefaultSubMenu("eHotel\n" + user.getUserType() + " - " + user.getName());
         
         DefaultMenuItem itemIndex = new DefaultMenuItem("Home");
         itemIndex.setOutcome("index");
@@ -110,11 +134,15 @@ public class MenuView {
         DefaultMenuItem itemSearchRooms = new DefaultMenuItem("Search Rooms");
         itemSearchRooms.setOutcome("searchRooms");
         firstSubmenu.addElement(itemSearchRooms);
+        
+        DefaultMenuItem itemSearchBookings = new DefaultMenuItem("Search Bookings");
+        itemSearchBookings.setOutcome("searchBookingsCustomer");
+        firstSubmenu.addElement(itemSearchBookings);
                 
         model.addElement(firstSubmenu);
         
         
-        DefaultSubMenu secondSubmenu = new DefaultSubMenu(user.getName() + " - " + user.getUserType());
+        DefaultSubMenu secondSubmenu = new DefaultSubMenu();
         
         DefaultMenuItem itemLogout = new DefaultMenuItem("Logout");
         itemLogout.setCommand("#{menuView.logout}");
