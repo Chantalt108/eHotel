@@ -52,7 +52,7 @@ public class BookingBean implements Serializable{
     private javax.transaction.UserTransaction utx;
     
     private List<Booking> lookupResults;
-    private Map<String, Map<String, String>> data = new HashMap<>();
+    private final Map<String, Map<String, String>> data = new HashMap<>();
     private Map<String,String> types;
     
     public BookingBean(){

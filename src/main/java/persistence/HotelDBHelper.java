@@ -6,6 +6,8 @@
 
 package persistence;
 
+import beans.EditBookings;
+import beans.EditHotels;
 import beans.SearchHotels;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +22,13 @@ public class HotelDBHelper {
     public static Hotel findHotel(EntityManager em,String id) {
         Hotel h = em.find(Hotel.class, id);
         return h;
+    }
+    
+    public static List<Hotel> deleteHotelsWithCriteria(EntityManager em, EditHotels editHotel){
+        Query query = em.createNativeQuery("DELETE FROM HOTELS "
+                + "WHERE hotel_id = " + editHotel.getHotel_Id());
+        
+        return performQuery(query);
     }
     
     

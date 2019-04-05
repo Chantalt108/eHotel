@@ -18,85 +18,85 @@
         <p:growl autoUpdate="true"/>
         <h:form id="form1">
             
-            <p:panel header="Add Booking" style="margin-bottom:20px">
-                       <p:panel header="Booking Details" style="margin-bottom:20px">
-                        <h:panelGrid columns="1">
-                            <div class="column">  
-                            <p:outputLabel value="Booking ID"/>
-                            <p:inputText id="booking_id"
-                                         value="#{BookingBean.booking_Id}" required = "true">
-                            </p:inputText>
-                            </div>
-                            
-                            <div class="column">  
-                            <p:outputLabel value="Checkin Date:"/>
-                            <p:calendar id="checkin_date"
-                                        value="#{BookingBean.checkin_Date}"
-                                        label="checkin_date"
-                                        yearRange = "c-120:c"
-                                        navigator="true"
-                                        showButtonPanel="true"
-                                        title="Pick the date you will be staying from the calendar"
-                                        required = "true">
-                            </p:calendar>
-                            </div>
-                            
-                            <div class="column">  
-                            <p:outputLabel value="Checkout Date:"/>
-                            <p:calendar id="checkout_date"
-                                        value="#{BookingBean.checkout_Date}"
-                                        label="checkout_date"
-                                        yearRange = "c-120:c"
-                                        navigator="true"
-                                        showButtonPanel="true"
-                                        title="Pick the date you will be leaving from the calendar or leave it blank">
-                            </p:calendar>
-                            </div>
-                            
-                            <div class="column">  
-                            <p:outputLabel value="Room ID"/>
-                            <p:inputText id="room_id"
-                                         value="#{BookingBean.room_Id}" required = "true">
-                            </p:inputText>
-                            </div>
-                            
-                            <div class="column">  
-                            <p:outputLabel value="Hotel ID"/>
-                            <p:inputText id="hotel_d"
-                                         value="#{BookingBean.hotel_Id}" required = "true">
-                            </p:inputText>
-                            </div>
-                            
-                            <div class="column">  
-                            <p:outputLabel value="Customer ID"/>
-                            <p:inputText id="cust_id"
-                                         value="#{BookingBean.cust_Id}" required = "true">
-                            </p:inputText>
-                            </div>
-                            
-                            <div class="column">  
-                            <p:outputLabel value="Employee ID"/>
-                            <p:inputText id="emp_id"
-                                         value="#{BookingBean.emp_Id}" required = "true">
-                            </p:inputText>
-                            </div>
-                            
-                            <div class="column">
-                            <p:outputLabel value="Paid?: "/>                                                      
-                            <p:selectOneMenu id="paid" value="#{BookingBean.paid}" required="true" label="paid" requiredMessage="An answer is required">
-                                <f:selectItem itemLabel="" itemValue="" noSelectionOption="false" />
-                                <f:selectItem itemLabel="Yes" itemValue="true" noSelectionOption="false" />
-                                <f:selectItem itemLabel="No" itemValue="false" noSelectionOption="false" />
-                                <f:selectItems value="#{BookingBean.paid}" />
-                                <p:ajax event="keyup" update="paidMsg"/>
-                            </p:selectOneMenu>
-                            <p:message  id="paidMsg" for="paid"/>
-                            </div>
-                                                        
-                        </h:panelGrid>
-                    </p:panel>           
-                    <p:commandButton id="submitBtn"  ajax="false" action="#{BookingBean.doAddBooking}" value="Add Room"/>    
-           </p:panel>   
+            <h:outputText value="Add Booking" escape="false"/>
+            <hr></hr>
+
+                <h:panelGrid columns="1">
+                    <div class="column">  
+                    <p:outputLabel value="Booking ID"/>
+                    <p:inputText id="booking_id"
+                                 value="#{BookingBean.booking_Id}" required = "true">
+                    </p:inputText>
+                    </div>
+
+                    <div class="column">  
+                    <p:outputLabel value="Checkin Date:"/>
+                    <p:calendar id="checkin_date"
+                                value="#{BookingBean.checkin_Date}"
+                                label="checkin_date"
+                                yearRange = "c-120:c"
+                                navigator="true"
+                                showButtonPanel="true"
+                                title="Pick the date you will be staying from the calendar"
+                                required = "true">
+                    </p:calendar>
+                    </div>
+
+                    <div class="column">  
+                    <p:outputLabel value="Checkout Date:"/>
+                    <p:calendar id="checkout_date"
+                                value="#{BookingBean.checkout_Date}"
+                                label="checkout_date"
+                                yearRange = "c-120:c"
+                                navigator="true"
+                                showButtonPanel="true"
+                                title="Pick the date you will be leaving from the calendar or leave it blank">
+                    </p:calendar>
+                    </div>
+
+                    <div class="column">  
+                    <p:outputLabel value="Room ID"/>
+                    <p:inputText id="room_id"
+                                 value="#{BookingBean.room_Id}" required = "true">
+                    </p:inputText>
+                    </div>
+
+                    <div class="column">  
+                    <p:outputLabel value="Hotel ID"/>
+                    <p:inputText id="hotel_d"
+                                 value="#{BookingBean.hotel_Id}" required = "true">
+                    </p:inputText>
+                    </div>
+
+                    <div class="column">  
+                    <p:outputLabel value="Customer ID"/>
+                    <p:inputText id="cust_id"
+                                 value="#{BookingBean.cust_Id}" required = "true">
+                    </p:inputText>
+                    </div>
+
+                    <div class="column">  
+                    <p:outputLabel value="Employee ID"/>
+                    <p:inputText id="emp_id"
+                                 value="#{BookingBean.emp_Id}" required = "true">
+                    </p:inputText>
+                    </div>
+
+                    <div class="column">
+                    <p:outputLabel value="Paid?: "/>                                                      
+                    <p:selectOneMenu id="paid" value="#{BookingBean.paid}" required="true" label="paid" requiredMessage="An answer is required">
+                        <f:selectItem itemLabel="" itemValue="" noSelectionOption="false" />
+                        <f:selectItem itemLabel="Yes" itemValue="true" noSelectionOption="false" />
+                        <f:selectItem itemLabel="No" itemValue="false" noSelectionOption="false" />
+                        <f:selectItems value="#{BookingBean.paid}" />
+                        <p:ajax event="keyup" update="paidMsg"/>
+                    </p:selectOneMenu>
+                    <p:message  id="paidMsg" for="paid"/>
+                    </div>
+
+                </h:panelGrid>
+       
+            <p:commandButton id="submitBtn"  ajax="false" action="#{BookingBean.doAddBooking}" value="Add Booking"/>      
         </h:form>
         <p:blockUI block="form1"  widgetVar="bui">
             Processing<br />

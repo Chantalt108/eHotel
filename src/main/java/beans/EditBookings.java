@@ -101,9 +101,12 @@ public class EditBookings implements Serializable{
 
        List<Booking> results = BookingDBHelper.editBookingsWithCriteria(em, this);
        setLookupResults(results);
-       if(results == null || results.isEmpty()){setFoundNoResults((Boolean) true);}
-        setNoCriteria(false);
-       return("viewBookings");
+       if(results == null || results.isEmpty()){
+           setFoundNoResults((Boolean) true);
+           return ("searchBookings");
+       }
+       setNoCriteria(false);
+       return("searchBookings");
     }
     
     public String doDeleteBooking() {

@@ -18,83 +18,77 @@
         <p:growl autoUpdate="true"/>
         <h:form id="form1">
             
-            <p:panel header="Add Room" style="margin-bottom:20px">
-                       <p:panel header="Room Details" style="margin-bottom:20px">
-                        <h:panelGrid columns="1">
-                            <div class="column">  
-                            <p:outputLabel value="Room Number:"/>
-                            <p:inputText id="room_id"
-                                         value="#{RoomBean.ROOM_ID}" required = "true">
-                            </p:inputText>
-                            </div>
-                            
-                            <div class="column">  
-                            <p:outputLabel value="Hotel Number:"/>
-                            <p:inputText id="hotel_id"
-                                         value="#{RoomBean.HOTEL_ID}" required = "true">
-                            </p:inputText>
-                            </div>
-                            
-                            <div class="column">  
-                            <p:outputLabel value="Price of Room:"/>
-                            <p:inputText id="price"
-                                         value="#{RoomBean.PRICE}" required = "true">
-                            </p:inputText>
-                            </div>
-                            
-                            <div class="row">
-                            <p:outputLabel value="Amenities:"/>
-                            <p:inputText id="amenities"
-                                          value="#{RoomBean.AMENITIES}" required = "true">
-                            </p:inputText>
-                            </div>
-                            
-                            <div class="row">
-                            <p:outputLabel value="Capacity"/>
-                            <p:inputText id="capacity"
-                                          value="#{RoomBean.CAPACITY}" required = "true">
-                            </p:inputText>
-                            </div>
-                            
-                            <div class="row">
-                            <p:outputLabel value="Extendable: "/>                                                      
-                            <p:selectOneMenu id="extendable" value="#{RoomBean.EXTENDABLE}" required="true" label="extendable" requiredMessage="An answer is required">
-                                <f:selectItem itemLabel="" itemValue="" noSelectionOption="false" />
-                                <f:selectItem itemLabel="Yes" itemValue="Yes" noSelectionOption="false" />
-                                <f:selectItem itemLabel="No" itemValue="No" noSelectionOption="false" />
-                                <f:selectItems value="#{RoomBean.EXTENDABLE}" />
-                                <p:ajax event="keyup" update="extendableMsg"/>
-                            </p:selectOneMenu>
-                            <p:message  id="extendableMsg" for="extendable"/>
-                            </div>
-                            
-                            <div>
-                            <p:outputLabel value="Outside View:*"/>                                                      
-                            <p:selectOneMenu id="outside_view" value="#{RoomBean.OUTSIDE_VIEW}" required="true" label="outside_view" requiredMessage="An answer is required">
-                                <f:selectItem itemLabel="" itemValue="" noSelectionOption="false" />
-                                <f:selectItem itemLabel="Mountain" itemValue="Mountain" noSelectionOption="false" />
-                                <f:selectItem itemLabel="Sea" itemValue="Sea" noSelectionOption="false" />
-                                <f:selectItems value="#{RoomBean.OUTSIDE_VIEW}" />
-                                <p:ajax event="keyup" update="outside_ViewMsg"/>
-                            </p:selectOneMenu>
-                            <p:message  id="outside_ViewMsg" for="outside_view"/>
-                            </div>
-                            
-                            <div class="row">
-                            <p:outputLabel value="Problems"/>
-                            <p:inputText id="problems"
-                                          value="#{RoomBean.PROBLEMS}">
-                            </p:inputText>
-                            </div>
-                            
-                        </h:panelGrid>
-                    </p:panel>
-              
-                                     
-                        <p:commandButton id="submitBtn"  ajax="false" action="#{RoomBean.doAddRoom}" value="Add Room"/>
-                   
-                   
-           </p:panel>   
+            <h:outputText value="Add Rooms" escape="false"/>
+            <hr></hr>
+                    <h:panelGrid columns="1">
+                        <div class="column">  
+                        <p:outputLabel value="Room Number:"/>
+                        <p:inputText id="room_id"
+                                     value="#{RoomBean.ROOM_ID}" required = "true">
+                        </p:inputText>
+                        </div>
+
+                        <div class="column">  
+                        <p:outputLabel value="Hotel Number:"/>
+                        <p:inputText id="hotel_id"
+                                     value="#{RoomBean.HOTEL_ID}" required = "true">
+                        </p:inputText>
+                        </div>
+
+                        <div class="column">  
+                        <p:outputLabel value="Price of Room:"/>
+                        <p:inputText id="price"
+                                     value="#{RoomBean.PRICE}" required = "true">
+                        </p:inputText>
+                        </div>
+
+                        <div class="row">
+                        <p:outputLabel value="Amenities:"/>
+                        <p:inputText id="amenities"
+                                      value="#{RoomBean.AMENITIES}" required = "true">
+                        </p:inputText>
+                        </div>
+
+                        <div class="row">
+                        <p:outputLabel value="Capacity"/>
+                        <p:inputText id="capacity"
+                                      value="#{RoomBean.CAPACITY}" required = "true">
+                        </p:inputText>
+                        </div>
+
+                        <div class="row">
+                        <p:outputLabel value="Extendable: "/>                                                      
+                        <p:selectOneMenu id="extendable" value="#{RoomBean.EXTENDABLE}" required="true" label="extendable" requiredMessage="An answer is required">
+                            <f:selectItem itemLabel="" itemValue="" noSelectionOption="false" />
+                            <f:selectItem itemLabel="Yes" itemValue="Yes" noSelectionOption="false" />
+                            <f:selectItem itemLabel="No" itemValue="No" noSelectionOption="false" />
+                            <f:selectItems value="#{RoomBean.EXTENDABLE}" />
+                            <p:ajax event="keyup" update="extendableMsg"/>
+                        </p:selectOneMenu>
+                        <p:message  id="extendableMsg" for="extendable"/>
+                        </div>
+
+                        <div>
+                        <p:outputLabel value="Outside View:*"/>                                                      
+                        <p:selectOneMenu id="outside_view" value="#{RoomBean.OUTSIDE_VIEW}" required="true" label="outside_view" requiredMessage="An answer is required">
+                            <f:selectItem itemLabel="" itemValue="" noSelectionOption="false" />
+                            <f:selectItem itemLabel="Mountain" itemValue="Mountain" noSelectionOption="false" />
+                            <f:selectItem itemLabel="Sea" itemValue="Sea" noSelectionOption="false" />
+                            <f:selectItems value="#{RoomBean.OUTSIDE_VIEW}" />
+                            <p:ajax event="keyup" update="outside_ViewMsg"/>
+                        </p:selectOneMenu>
+                        <p:message  id="outside_ViewMsg" for="outside_view"/>
+                        </div>
+
+                        <div class="row">
+                        <p:outputLabel value="Problems"/>
+                        <p:inputText id="problems"
+                                      value="#{RoomBean.PROBLEMS}">
+                        </p:inputText>
+                        </div>
+
+                    </h:panelGrid>
+                <p:commandButton id="submitBtn"  ajax="false" action="#{RoomBean.doAddRoom}" value="Add Room"/>  
         </h:form>
         <p:blockUI block="form1"  widgetVar="bui">
             Processing<br />
