@@ -48,6 +48,12 @@ public class RoomDBHelper {
         
     }
     
+    public static List<Room> searchRoomsByCap(EntityManager em, SearchRooms searchRoom) {
+        Query query = em.createQuery("SELECT r FROM Room r WHERE r.HOTEL_ID = :rHOTEL_ID");
+        query.setParameter("rHOTEL_ID", searchRoom.getHOTEL_ID());
+        return performQuery(query);
+    }
+    
     public static List<Room> findRoomsWithCriteria(EntityManager em, SearchRooms searchRoom){       
         String initQueryString = "SELECT r FROM Room r";
         String whereClauseConditions = "";

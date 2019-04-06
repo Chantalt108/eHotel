@@ -86,6 +86,19 @@ public class SearchRooms implements Serializable {
        return("viewRooms");
     }
     
+    public String searchRoomsByCap(){
+        if (getROOM_ID() == 0 && getHOTEL_ID() == 0 && getAREA() == 0){
+            setNoCriteria(true);
+            return(null);
+        }
+        
+       List<Room> results = RoomDBHelper.searchRoomsByCap(em, this);
+       setLookupResults(results);
+       if(results == null || results.isEmpty()){setFoundNoResults((Boolean) true);}
+        setNoCriteria(false);
+       return("view2Results");
+    }
+    
     public void setLookupResults(List<Room> results) {
         this.lookupResults = results;
     }

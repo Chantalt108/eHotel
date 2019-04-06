@@ -108,10 +108,10 @@ public class MenuView {
         itemAddAccount.setOutcome("selectUserCreateAcc");
         thirdSubmenu.addElement(itemAddAccount);
         
-        DefaultMenuItem itemEditUsers = new DefaultMenuItem("Edit Users");
-        itemEditUsers.setCommand("editUsers");
-        thirdSubmenu.addElement(itemEditUsers);
-  
+//        DefaultMenuItem itemEditUsers = new DefaultMenuItem("Edit Users");
+//        itemEditUsers.setCommand("editUsers");
+//        thirdSubmenu.addElement(itemEditUsers);
+//  
         model.addElement(thirdSubmenu);
         
         DefaultSubMenu secondSubmenu = new DefaultSubMenu();
@@ -143,9 +143,9 @@ public class MenuView {
         
         DefaultSubMenu secondSubmenu = new DefaultSubMenu();
         
-        DefaultMenuItem itemView1 = new DefaultMenuItem("View 1 - Hotels in Area");
-        itemView1.setOutcome("view1");
-        secondSubmenu.addElement(itemView1);
+//        DefaultMenuItem itemView1 = new DefaultMenuItem("View 1 - Hotels in Area");
+//        itemView1.setOutcome("view1");
+//        secondSubmenu.addElement(itemView1);
         
         DefaultMenuItem itemView2 = new DefaultMenuItem("View 2 - Capacity of Rooms");
         itemView2.setOutcome("view2");

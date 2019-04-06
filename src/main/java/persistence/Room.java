@@ -8,17 +8,14 @@ package persistence;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.ColumnResult;
+import javax.persistence.ConstructorResult;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.SqlResultSetMapping;
 import javax.persistence.Table;
 
 /**
@@ -27,6 +24,15 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="ROOMS")
+@SqlResultSetMapping(
+    name = "view1",
+        classes = @ConstructorResult(
+        targetClass = Room.class,
+                columns = {
+                    @ColumnResult(name = "room_id", type = int.class),
+                    @ColumnResult(name = "hotel_id", type = int.class),
+                    @ColumnResult(name = "area", type = int.class)
+                }))
 public class Room implements Serializable {
     private static long serialVersionUID = 1L;
 
@@ -53,7 +59,7 @@ public class Room implements Serializable {
     private String OUTSIDE_VIEW;
     private Boolean EXTENDABLE;
     private String PROBLEMS;
-    @ManyToMany(mappedBy = "ROOMS")
+    @ManyToMany(mappedBy = "rooms")
     private Set<UserAccount> users = new HashSet<>();
     
     public Room() {
